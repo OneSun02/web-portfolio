@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaming website</title>
-    <!-- CSS -->
     <link rel="stylesheet" href="/static/style.css">
-    <!-- Fonts & Boxicons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap&subset=vietnamese" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<!-- Import Anton hỗ trợ tiếng Việt -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap&subset=vietnamese" rel="stylesheet">
+
 </head>
 
 <body>
@@ -50,13 +50,12 @@
                 <div class="next-btn">
                     NEXT
                 </div>
+                <!-- Icon mũi tên động -->
                 <div class="scroll-down">
                     <i class='bx bx-chevrons-down'></i>
                 </div>
             </div>
         </section>
-
-        <!-- Skills Section -->
         <section class="skills-section autoDisplay">
             <div class="slider" style="--quantity: 10">
                 <div class="item" style="--position: 1"><img src="/static/img/slider-image (1).jpg" alt="Machine Learning">
@@ -90,13 +89,38 @@
                     <span class="tooltip">Data Analyst</span>
                 </div>
             </div>
+            <div class="content">
+                <h1 data-content="TECH STACK">
+                    TECH STACK
+                </h1>
+                <div class="author">
+                    <h2>NHAT</h2>
+                    <p><b>Web Design</b></p>
+                    <p>
+                        Building modern and responsive websites.
+                    </p>
+                </div>
+                <div class="model"></div>
+            </div>
+        </section>
+        <section class="about-section">
+            <h1>About Me</h1>
+            <div class="autoBlur">
+                <h2>DISCOVER MY JOURNEY IN WEB DEVELOPMENT</h2>
+            </div>
+            <div class="image-box autoTakeFull">
+                <img src="/static/img/about-img.png" alt="about-img">
+            </div>
+            <span>From design to deployment — building clean and responsive websites.</span>
+            <p>Passionate about crafting user-friendly digital experiences with modern technologies.</p>
         </section>
 
-        <!-- Projects Section -->
         <section class="info-section">
             <h1>My Projects</h1>
-            <p>Dưới đây là một số dự án web mà tôi đã tham gia phát triển và tối ưu, từ WordPress đến framework hiện đại.</p>
+            <p>Dưới đây là một số dự án web mà tôi đã tham gia phát triển và tối ưu, từ WordPress đến framework hiện
+                đại.</p>
 
+            <!-- Group 1 -->
             <div class="project-group">
                 <h2 class="project-title autoDisplay"> ⚝ NBT PORTFOLIO ⚝</h2>
                 <div class="info-cards special-layout">
@@ -116,17 +140,76 @@
                         <video src="/static/videos/feature-2.mp4" autoplay loop muted plays-inline></video>
                         <button>View Project</button>
                     </div>
+                    <div class="card autoDisplay">
+                        <div class="card-text">
+                            <p>A landing page project focused on sleek animations, SEO optimization, and fast
+                                performance.</p>
+                        </div>
+                        <video src="/static/videos/feature-3.mp4" autoplay loop muted plays-inline></video>
+                        <button>View Project</button>
+                    </div>
+                    <div class="card autoDisplay">
+                        <div class="card-text">
+                            <p>A responsive admin dashboard built with Django and React, focusing on usability and
+                                scalability.</p>
+                        </div>
+                        <video src="/static/videos/feature-4.mp4" autoplay loop muted plays-inline></video>
+                        <button>View Project</button>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Education Section -->
+            <!-- Group 2 -->
+            <div class="project-group">
+                <h2 class="project-title autoDisplay"> ⚝ BOOKS STORE ⚝</h2>
+                <div class="info-cards special-layout">
+                    <div class="card autoDisplay">
+                        <div class="card-text">
+                            <p>I contributed as a web developer to their WordPress-based site, optimized for SEO,
+                                performance, and responsiveness.</p>
+                        </div>
+                        <video src="/static/videos/feature-1.mp4" autoplay loop muted plays-inline></video>
+                        <button>View Project</button>
+                    </div>
+                    <div class="card autoDisplay">
+                        <div class="card-text">
+                            <p>A modern online bookstore platform with clean UI, responsive design, and integrated cart
+                                system.</p>
+                        </div>
+                        <video src="/static/videos/feature-2.mp4" autoplay loop muted plays-inline></video>
+                        <button>View Project</button>
+                    </div>
+                    <div class="card autoDisplay">
+                        <div class="card-text">
+                            <p>A landing page project focused on sleek animations, SEO optimization, and fast
+                                performance.</p>
+                        </div>
+                        <video src="/static/videos/feature-3.mp4" autoplay loop muted plays-inline></video>
+                        <button>View Project</button>
+                    </div>
+                    <div class="card autoDisplay">
+                        <div class="card-text">
+                            <p>A responsive admin dashboard built with Django and React, focusing on usability and
+                                scalability.</p>
+                        </div>
+                        <video src="/static/videos/feature-4.mp4" autoplay loop muted plays-inline></video>
+                        <button>View Project</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
         <section class="education-section">
             <h1>EDUCATION</h1>
             <div class="edu-card">
                 <div class="edu-content">
                     <h2>Đại học Công nghệ Thông tin (UIT) – ĐHQG TP.HCM</h2>
                     <p><em>Nơi tôi trưởng thành và nuôi dưỡng niềm đam mê công nghệ.</em></p>
+                    <ul>
+                        <li>Chuyên ngành: <b>Công nghệ Thông tin</b></li>
+                        <li>Môi trường học tập sáng tạo, định hướng nghiên cứu</li>
+                        <li>Trang bị nền tảng vững chắc về lập trình, hệ thống và giải pháp công nghệ</li>
+                    </ul>
                 </div>
                 <div class="edu-badge">
                     <img src="/static/img/Logo_UIT.png" alt="UIT Logo">
@@ -135,34 +218,34 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
+
         <section class="contact-section">
             <h1>CONTACT</h1>
+            <div class="autoBlur">
+                <h2>LET'S BUILD THE NEW ERA OF GAMING TOGETHER</h2>
+            </div>
             <button>CONTACT US</button>
             <img class="img1" src="/static/img/contact-1.jpg" alt="contact-img">
+            <img class="img2" src="/static/img/contact-2.jpg" alt="contact-img">
+            <img class="img3" src="/static/img/contact-3.jpg" alt="contact-img">
         </section>
-
-        <!-- Footer -->
-        <section class="footer">
-            <h2>Contact</h2>
-            <ul>
-                <li><a href="#" aria-label="Youtube"><i class="bx bxl-youtube"></i></a></li>
-                <li><a href="#" aria-label="Twitter"><i class="bx bxl-twitter"></i></a></li>
-                <li><a href="#" aria-label="Github"><i class="bx bxl-github"></i></a></li>
-                <li><a href="#" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a></li>
-            </ul>
-        </section>
-
-        <!-- Chatbox -->
-        <div id="chatbox">
-            <div id="messages"></div>
-            <input type="text" id="userInput" placeholder="Nhập câu hỏi..."/>
-            <button onclick="sendMessage()">Gửi</button>
-        </div>
+<section class="footer">
+    <h2>Contact</h2>
+    <ul>
+        <li><a href="#" aria-label="Youtube"><i class="bx bxl-youtube"></i></a></li>
+        <li><a href="#" aria-label="Twitter"><i class="bx bxl-twitter"></i></a></li>
+        <li><a href="#" aria-label="Github"><i class="bx bxl-github"></i></a></li>
+        <li><a href="#" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a></li>
+    </ul>
+</section>
+<!-- Chatbox container -->
+<div id="chatbox">
+  <div id="messages"></div>
+  <input type="text" id="userInput" placeholder="Nhập câu hỏi..."/>
+  <button onclick="sendMessage()">Gửi</button>
+</div>
 
     </div>
-
-    <!-- JS -->
     <script src="/static/app.js"></script>
 </body>
 
