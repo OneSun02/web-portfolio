@@ -1,12 +1,20 @@
 import subprocess
 import webbrowser
 import time
+import os
 
-# Chạy uvicorn server trong background
-subprocess.Popen(["uvicorn", "server:app", "--reload"])
+# Path Python của venv
+venv_python = os.path.abspath("venv/Scripts/python.exe")
 
-# Chờ server lên (khoảng 2 giây)
+# Bật server FastAPI bằng uvicorn từ venv
+proc = subprocess.Popen(
+    [venv_python, "-m", "uvicorn", "server:app", "--reload"],
+    cwd=os.getcwd()
+)
+
+# Chờ server khởi động
 time.sleep(2)
 
-# Mở index.html
-webbrowser.open("index.html")  # hoặc link tuyệt đối nếu không cùng thư mục
+# Mở frontend
+frontend_path = os.path.abspath("../frontend/index.html")
+webbrowser.open(f"file:///{frontend_path.replace(os.sep, '/')}")
