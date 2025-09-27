@@ -992,65 +992,58 @@ clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20
 
 /* BLUR EFFECT ANIMATION */
 @keyframes autoBlurAnimation {
-    0% {
-        filter: blur(40px);
-    }
-    40%, 60% {
-        filter: blur(0);
-        transform: translateY(0px);
-        opacity: 1;
-    }
-    100% {
-        filter: blur(40px);
-        transform: translateY(-200px);
-        opacity: 0;
-    }
-}
-.autoBlur {
+  0% { 
+    filter: blur(40px);
     opacity: 0;
+    transform: translateY(50px);
+  }
+  100% { 
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.autoBlur.show {
-    animation: autoBlurAnimation 3s linear both;
+
+
+.autoBlur { opacity: 0; }
+.autoBlur.animate {
+  animation: autoBlurAnimation 1.5s ease-in-out both;
 }
 
 /* TAKE FULL SCREEN ANIMATION */
 @keyframes autoTakeFullAnimation {
-    to {
-        width: 100%;
-        height: 100vh;
-        border-radius: 0;
-        margin-bottom: 100px;
-    }
+  to {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    margin-bottom: 100px;
+  }
 }
 .autoTakeFull {
-    /* trạng thái ban đầu bạn set nhỏ hơn tùy ý */
-    width: 300px;
-    height: 200px;
-    border-radius: 20px;
-    margin: 20px auto;
+  width: 300px;
+  height: 200px;
+  border-radius: 20px;
+  margin: 20px auto;
 }
-.autoTakeFull.show {
-    animation: autoTakeFullAnimation 1s ease-in-out both;
+.autoTakeFull.animate {
+  animation: autoTakeFullAnimation 1s ease-in-out both;
 }
 
 /* AUTO DISPLAY ANIMATION */
 @keyframes autoDisplayAnimation {
-    from {
-        opacity: 0;
-        transform: translateY(200px) scale(0.3);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-.autoDisplay {
+  from {
     opacity: 0;
+    transform: translateY(200px) scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
-.autoDisplay.show {
-    animation: autoDisplayAnimation 0.8s ease-out both;
+.autoDisplay { opacity: 0; }
+.autoDisplay.animate {
+  animation: autoDisplayAnimation 0.8s ease-out both;
 }
-
 
 /*----------------------------------------------------------*/
 

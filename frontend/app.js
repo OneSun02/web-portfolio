@@ -142,20 +142,23 @@ function appendMessage(sender, text, type) {
     msgBox.scrollTop = msgBox.scrollHeight;
 }
 document.addEventListener("DOMContentLoaded", () => {
-  const options = {
-    threshold: 0.2 // khi phần tử hiện >=20% trong viewport thì chạy
-  };
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+      const el = entry.target;
+
       if (entry.isIntersecting) {
-        entry.target.classList.add("show");
+        // Reset để animation có thể chạy lại
+        el.classList.remove("animate");
+        void el.offsetWidth; // force reflow
+        el.classList.add("animate");
       } else {
-        // Nếu muốn reset khi ra khỏi màn hình thì bỏ comment:
-        // entry.target.classList.remove("show");
+        // Khi ra khỏi viewport thì bỏ class đi
+        el.classList.remove("animate");
       }
     });
-  }, options);
+  }, {
+    threshold: 0.2 // hiển thị ≥20% thì trigger
+  });
 
   document.querySelectorAll(".autoBlur, .autoTakeFull, .autoDisplay")
     .forEach(el => observer.observe(el));
