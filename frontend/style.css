@@ -905,12 +905,13 @@ clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20
         font-size: 50px;
         max-width: 300px;
     }
-    .contact-section .img1{
-        height:200px;
-        width:150px;
-        right:-40px;
-        top:20px;
-    }
+.contact-section .img1 {
+    width: 150px;
+    height: 200px;
+    right: 0;                /* nằm sát phải viewport */
+    top: 20px;
+    transform: translateX(30%); /* đẩy ra ngoài 1 chút, an toàn trên mọi màn hình */
+}
     .contact-section .img2{
         top:30px;
         left:-70px;
@@ -1235,125 +1236,69 @@ Chatbox container
 -------------------- */
 #chatbox {
   position: fixed;
-  bottom: 20px;
+  bottom: 80px; /* trên nút chat */
   right: 20px;
-  width: 320px;
+  width: 300px;
   max-width: 90%;
-  height: 450px;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  display: flex;
+  height: 400px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: none; /* mặc định ẩn */
   flex-direction: column;
   overflow: hidden;
   z-index: 999;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: all 0.3s ease-in-out;
+  font-family: Arial, sans-serif;
 }
 
 /* Chat header */
 #chatHeader {
-  background: linear-gradient(90deg, #007bff, #00bfff);
+  background: #007bff;
   color: white;
-  padding: 12px 16px;
-  font-weight: 600;
+  padding: 10px;
+  font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: move;
-  font-size: 16px;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  cursor: move; /* có thể add drag sau này */
 }
 
 /* Close button */
 #chatClose {
   cursor: pointer;
   font-size: 20px;
-  color: #fff;
-  transition: transform 0.2s;
-}
-#chatClose:hover {
-  transform: scale(1.2);
 }
 
 /* Messages container */
 #messages {
   flex: 1;
-  padding: 12px;
+  padding: 10px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  background: #f5f5f5;
-  scrollbar-width: thin;
-  scrollbar-color: #c1c1c1 #f5f5f5;
-}
-
-/* Custom scrollbar for Webkit */
-#messages::-webkit-scrollbar {
-  width: 6px;
-}
-#messages::-webkit-scrollbar-track {
-  background: #f5f5f5;
-  border-radius: 3px;
-}
-#messages::-webkit-scrollbar-thumb {
-  background-color: #c1c1c1;
-  border-radius: 3px;
+  gap: 4px;
+  background: #f7f7f7;
 }
 
 /* Input area */
 #chatInput {
   display: flex;
-  border-top: 1px solid #e0e0e0;
-  padding: 10px;
-  background: #fafafa;
+  border-top: 1px solid #ccc;
 }
 
-/* Input field */
 #chatInput input {
   flex: 1;
-  padding: 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
+  padding: 8px;
+  border: none;
   outline: none;
   font-size: 14px;
-  transition: all 0.2s;
-}
-#chatInput input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0,123,255,0.3);
 }
 
-/* Send button */
 #chatInput button {
-  margin-left: 8px;
-  padding: 10px 16px;
+  padding: 8px 12px;
   border: none;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #007bff, #00bfff);
-  color: #fff;
+  background: #007bff;
+  color: white;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 600;
-  transition: all 0.2s;
-}
-#chatInput button:hover {
-  background: linear-gradient(90deg, #0056b3, #0099e0);
-  transform: translateY(-1px);
-}
-
-/* Responsive */
-@media screen and (max-width: 480px) {
-  #chatbox {
-    width: 90%;
-    height: 400px;
-    bottom: 15px;
-    right: 5%;
-  }
-  #chatInput button {
-    padding: 8px 12px;
-  }
 }
