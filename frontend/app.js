@@ -110,22 +110,31 @@ function appendMessage(sender, text, type) {
 
     // Nội dung
     msg.textContent = `${sender}: ${text}`;
-    msg.style.padding = "6px 10px";
-    msg.style.margin = "4px 0";
-    msg.style.borderRadius = "10px";
+    msg.style.padding = "8px 12px";
+    msg.style.margin = "6px 0";
+    msg.style.borderRadius = "12px";
     msg.style.maxWidth = "80%";
     msg.style.wordWrap = "break-word";
+    msg.style.fontFamily = "Arial, sans-serif";
+    msg.style.fontSize = "14px";
 
     // Kiểu tin nhắn
     if (type === "user") {
-        msg.style.background = "#daf1ff";
+        msg.style.background = "#A0E7E5"; // xanh nhạt
+        msg.style.color = "#000";          // chữ đen
         msg.style.alignSelf = "flex-end";
+        msg.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)";
     } else if (type === "ai") {
-        msg.style.background = "#e9e9e9";
+        msg.style.background = "#F0F0F0"; // xám nhạt
+        msg.style.color = "#333";          // chữ tối
         msg.style.alignSelf = "flex-start";
-    } else {
-        msg.style.color = "red";
+        msg.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)";
+    } else { // lỗi / system
+        msg.style.background = "#FF6B6B"; // đỏ nổi bật
+        msg.style.color = "#fff";          // chữ trắng
         msg.style.fontStyle = "italic";
+        msg.style.alignSelf = "center";
+        msg.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
     }
 
     // Append và scroll
