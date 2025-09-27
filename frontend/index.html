@@ -238,12 +238,19 @@
         <li><a href="#" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a></li>
     </ul>
 </section>
+<!-- Chatbox toggle button -->
+<button id="chatToggle">💬 Chat với Nhat</button>
+
 <!-- Chatbox container -->
 <div id="chatbox">
+  <div id="chatHeader">Nhat AI <span id="chatClose">×</span></div>
   <div id="messages"></div>
-  <input type="text" id="userInput" placeholder="Nhập câu hỏi..."/>
-  <button onclick="sendMessage()">Gửi</button>
+  <div id="chatInput">
+    <input type="text" id="userInput" placeholder="Nhập câu hỏi..."/>
+    <button onclick="sendMessage()">Gửi</button>
+  </div>
 </div>
+
 
     </div>
     <script src="/static/app.js"></script>

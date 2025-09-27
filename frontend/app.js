@@ -49,18 +49,34 @@ document.querySelector('.scroll-down').addEventListener('click', () => {
 });
 
 // -------------------------
-// Chatbox
+// Chatbox toggle
+// -------------------------
+const chatbox = document.getElementById("chatbox");
+const chatToggle = document.getElementById("chatToggle");
+const chatClose = document.getElementById("chatClose");
+
+// Click mở chat
+chatToggle.addEventListener("click", () => {
+    chatbox.style.display = "flex";
+});
+
+// Click đóng chat
+chatClose.addEventListener("click", () => {
+    chatbox.style.display = "none";
+});
+
+// -------------------------
+// Gửi tin nhắn
 // -------------------------
 async function sendMessage() {
     const input = document.getElementById("userInput");
     const message = input.value.trim();
     if (!message) return;
 
-    appendMessage("Bạn", message, "user");
+    appendMessage("Bạn", message, "user"); // user luôn là "Bạn"
     input.value = "";
 
     try {
-        // Fetch backend /chat (relative URL)
         const res = await fetch("/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -69,7 +85,7 @@ async function sendMessage() {
 
         const data = await res.json();
 
-        appendMessage("AI", data.reply, "ai");
+        appendMessage("Nhat", data.reply, "ai"); // AI hiển thị là "Nhat"
     } catch (err) {
         appendMessage("System", "❌ Lỗi kết nối backend!", "error");
         console.error(err);
@@ -81,6 +97,10 @@ document.getElementById("userInput").addEventListener("keypress", (e) => {
     if (e.key === "Enter") sendMessage();
 });
 
+// Gắn sự kiện nút gửi (nếu bạn có button)
+const sendBtn = document.querySelector("#chatInput button");
+if (sendBtn) sendBtn.addEventListener("click", sendMessage);
+
 // -------------------------
 // Hiển thị tin nhắn
 // -------------------------
@@ -88,12 +108,15 @@ function appendMessage(sender, text, type) {
     const msgBox = document.getElementById("messages");
     const msg = document.createElement("div");
 
+    // Nội dung
     msg.textContent = `${sender}: ${text}`;
     msg.style.padding = "6px 10px";
     msg.style.margin = "4px 0";
     msg.style.borderRadius = "10px";
     msg.style.maxWidth = "80%";
+    msg.style.wordWrap = "break-word";
 
+    // Kiểu tin nhắn
     if (type === "user") {
         msg.style.background = "#daf1ff";
         msg.style.alignSelf = "flex-end";
@@ -105,6 +128,7 @@ function appendMessage(sender, text, type) {
         msg.style.fontStyle = "italic";
     }
 
+    // Append và scroll
     msgBox.appendChild(msg);
-    msgBox.scrollTop = msgBox.scrollHeight; // auto scroll
+    msgBox.scrollTop = msgBox.scrollHeight;
 }
