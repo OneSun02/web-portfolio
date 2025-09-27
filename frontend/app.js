@@ -142,49 +142,100 @@ function appendMessage(sender, text, type) {
     msgBox.scrollTop = msgBox.scrollHeight;
 }
 // Check support cho animation-timeline
-const supportTimeline = CSS.supports("animation-timeline: view()");
+(function(){
+  const supportTimeline = CSS.supports("animation-timeline: view()");
+  if (supportTimeline) return; // Trình duyệt đã hỗ trợ → dùng CSS gốc
 
-if (!supportTimeline) {
-  console.log("⚡ Fallback đang chạy (JS instead of animation-timeline)");
+  console.log("⚡ Polyfill scroll animation đang chạy...");
+
+  // --- Helper nội suy ---
+  function lerp(a, b, t) { return a + (b - a) * t; }
 
   // --- autoBlur ---
-  document.querySelectorAll(".autoBlur").forEach(el => {
-    const anim = el.animate([
-      { filter: "blur(40px)", transform: "translateY(0px)", opacity: 1 },
-      { filter: "blur(0px)", transform: "translateY(0px)", opacity: 1, offset: 0.4 },
-      { filter: "blur(0px)", transform: "translateY(0px)", opacity: 1, offset: 0.6 },
-      { filter: "blur(40px)", transform: "translateY(-200px)", opacity: 0 }
-    ], { duration: 3000, fill: "both" });
+  const autoBlurs = document.querySelectorAll(".autoBlur");
+function updateAutoBlur() {
+  autoBlurs.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight;
 
-    anim.pause();
-    new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) anim.play(); });
-    }, { threshold: 0.1 }).observe(el);
-  });
+    // Tính phần trăm hiển thị trong viewport
+    const visible = Math.min(Math.max((vh - rect.top) / (vh + rect.height), 0), 1);
+    let progress = visible; // 0..1 mượt hơn
 
-  // --- autoTakeFull ---
-  document.querySelectorAll(".autoTakeFull").forEach(el => {
-    const anim = el.animate([
-      { width: el.offsetWidth + "px", height: el.offsetHeight + "px", borderRadius: "20px", marginBottom: "0" },
-      { width: "100%", height: "100vh", borderRadius: "0", marginBottom: "100px" }
-    ], { duration: 1000, fill: "forwards" });
-
-    anim.pause();
-    new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) anim.play(); });
-    }, { threshold: 0.65 }).observe(el);
-  });
-
-  // --- autoDisplay ---
-  document.querySelectorAll(".autoDisplay").forEach(el => {
-    const anim = el.animate([
-      { opacity: 0, transform: "translateY(200px) scale(0.3)" },
-      { opacity: 1, transform: "translateY(0) scale(1)" }
-    ], { duration: 800, fill: "forwards" });
-
-    anim.pause();
-    new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) anim.play(); });
-    }, { threshold: 0.1 }).observe(el);
+    if (progress <= 0.4) {
+      const t = progress / 0.4;
+      el.style.filter = `blur(${lerp(40, 0, t)}px)`;
+      el.style.opacity = t;
+      el.style.transform = `translateY(0px)`;
+    } else if (progress <= 0.6) {
+      el.style.filter = "blur(0px)";
+      el.style.opacity = 1;
+      el.style.transform = "translateY(0px)";
+    } else {
+      const t = (progress - 0.6) / 0.4;
+      el.style.filter = `blur(${lerp(0, 40, t)}px)`;
+      el.style.opacity = 1 - t;
+      el.style.transform = `translateY(${lerp(0, -200, t)}px)`;
+    }
   });
 }
+
+
+  // --- autoTakeFull ---
+  const autoTakes = document.querySelectorAll(".autoTakeFull");
+  function updateAutoTakeFull() {
+    autoTakes.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const vw = window.innerWidth;
+
+      // scroll từ 70% → 65% viewport
+      const start = vh * 0.7;
+      const end   = vh * 0.65;
+      let progress = (start - rect.top) / (start - end);
+      progress = Math.min(Math.max(progress, 0), 1);
+
+      const width  = lerp(el.offsetWidth, vw, progress);
+      const height = lerp(el.offsetHeight, vh, progress);
+      const radius = lerp(20, 0, progress);
+      const margin = lerp(0, 100, progress);
+
+      el.style.width        = width + "px";
+      el.style.height       = height + "px";
+      el.style.borderRadius = radius + "px";
+      el.style.marginBottom = margin + "px";
+    });
+  }
+
+  // --- autoDisplay ---
+  const autoDisplays = document.querySelectorAll(".autoDisplay");
+  function updateAutoDisplay() {
+    autoDisplays.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      // scroll từ 70% → 5%
+      const start = vh * 0.7;
+      const end   = vh * 0.05;
+      let progress = (start - rect.top) / (start - end);
+      progress = Math.min(Math.max(progress, 0), 1);
+
+      const opacity = lerp(0, 1, progress);
+      const y = lerp(200, 0, progress);
+      const scale = lerp(0.3, 1, progress);
+
+      el.style.opacity = opacity;
+      el.style.transform = `translateY(${y}px) scale(${scale})`;
+    });
+  }
+
+  // --- update all on scroll ---
+  function updateAll() {
+    updateAutoBlur();
+    updateAutoTakeFull();
+    updateAutoDisplay();
+  }
+  window.addEventListener("scroll", updateAll);
+  window.addEventListener("resize", updateAll);
+  updateAll();
+})();
