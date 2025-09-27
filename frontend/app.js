@@ -143,7 +143,7 @@ function appendMessage(sender, text, type) {
 }
 document.addEventListener("DOMContentLoaded", () => {
   const options = {
-    threshold: 0.2 // phần tử xuất hiện >=20% thì trigger
+    threshold: 0.2 // khi phần tử hiện >=20% trong viewport thì chạy
   };
 
   const observer = new IntersectionObserver((entries) => {
@@ -151,13 +151,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
       } else {
-        // Nếu muốn hiệu ứng lặp lại khi scroll ra ngoài thì bỏ comment dòng sau
+        // Nếu muốn reset khi ra khỏi màn hình thì bỏ comment:
         // entry.target.classList.remove("show");
       }
     });
   }, options);
 
-  // Quan sát các element
   document.querySelectorAll(".autoBlur, .autoTakeFull, .autoDisplay")
     .forEach(el => observer.observe(el));
 });
