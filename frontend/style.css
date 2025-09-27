@@ -991,60 +991,58 @@ clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20
 }
 
 /* BLUR EFFECT ANIMATION */
+.autoBlur {
+    animation: autoBlurAnimation 3s linear both;
+    animation-timeline: view();
+}
+
 @keyframes autoBlurAnimation {
-  0% { 
-    filter: blur(40px);
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  100% { 
-    filter: blur(0);
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    0% {
+        filter: blur(40px);
+    }
 
+    40%,
+    60% {
+        filter: blur(0);
+        transform: translateY(0px);
+        opacity: 1;
+    }
 
-.autoBlur { opacity: 0; }
-.autoBlur.animate {
-  animation: autoBlurAnimation 1.5s ease-in-out both;
+    100% {
+        filter: blur(40px);
+        transform: translateY(-200px);
+        opacity: 0;
+    }
 }
-
-/* TAKE FULL SCREEN ANIMATION */
-@keyframes autoTakeFullAnimation {
-  to {
-    width: 100%;
-    height: 100vh;
-    border-radius: 0;
-    margin-bottom: 100px;
-  }
-}
+/* Take Full Screen Animation */
 .autoTakeFull {
-  width: 300px;
-  height: 200px;
-  border-radius: 20px;
-  margin: 20px auto;
-}
-.autoTakeFull.animate {
-  animation: autoTakeFullAnimation 1s ease-in-out both;
+    animation: autoTakeFullAnimation both;
+    animation-timeline: view(70% 65%); 
 }
 
-/* AUTO DISPLAY ANIMATION */
+@keyframes autoTakeFullAnimation {
+    to {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        margin-bottom: 100px;
+    }
+}
+/* AUTO DISPLAY ANIMATION }*/
+.autoDisplay {
+    animation: autoDisplayAnimation both;
+    animation-timeline: view(70% 5%);
+}
 @keyframes autoDisplayAnimation {
-  from {
-    opacity: 0;
-    transform: translateY(200px) scale(0.3);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(200px) scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
-.autoDisplay { opacity: 0; }
-.autoDisplay.animate {
-  animation: autoDisplayAnimation 0.8s ease-out both;
-}
-
 /*----------------------------------------------------------*/
 
 .education-section {

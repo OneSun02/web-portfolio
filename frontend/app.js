@@ -141,25 +141,50 @@ function appendMessage(sender, text, type) {
     msgBox.appendChild(msg);
     msgBox.scrollTop = msgBox.scrollHeight;
 }
-document.addEventListener("DOMContentLoaded", () => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const el = entry.target;
+// Check support cho animation-timeline
+const supportTimeline = CSS.supports("animation-timeline: view()");
 
-      if (entry.isIntersecting) {
-        // Reset để animation có thể chạy lại
-        el.classList.remove("animate");
-        void el.offsetWidth; // force reflow
-        el.classList.add("animate");
-      } else {
-        // Khi ra khỏi viewport thì bỏ class đi
-        el.classList.remove("animate");
-      }
-    });
-  }, {
-    threshold: 0.2 // hiển thị ≥20% thì trigger
+if (!supportTimeline) {
+  console.log("⚡ Fallback đang chạy (JS instead of animation-timeline)");
+
+  // --- autoBlur ---
+  document.querySelectorAll(".autoBlur").forEach(el => {
+    const anim = el.animate([
+      { filter: "blur(40px)", transform: "translateY(0px)", opacity: 1 },
+      { filter: "blur(0px)", transform: "translateY(0px)", opacity: 1, offset: 0.4 },
+      { filter: "blur(0px)", transform: "translateY(0px)", opacity: 1, offset: 0.6 },
+      { filter: "blur(40px)", transform: "translateY(-200px)", opacity: 0 }
+    ], { duration: 3000, fill: "both" });
+
+    anim.pause();
+    new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) anim.play(); });
+    }, { threshold: 0.1 }).observe(el);
   });
 
-  document.querySelectorAll(".autoBlur, .autoTakeFull, .autoDisplay")
-    .forEach(el => observer.observe(el));
-});
+  // --- autoTakeFull ---
+  document.querySelectorAll(".autoTakeFull").forEach(el => {
+    const anim = el.animate([
+      { width: el.offsetWidth + "px", height: el.offsetHeight + "px", borderRadius: "20px", marginBottom: "0" },
+      { width: "100%", height: "100vh", borderRadius: "0", marginBottom: "100px" }
+    ], { duration: 1000, fill: "forwards" });
+
+    anim.pause();
+    new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) anim.play(); });
+    }, { threshold: 0.65 }).observe(el);
+  });
+
+  // --- autoDisplay ---
+  document.querySelectorAll(".autoDisplay").forEach(el => {
+    const anim = el.animate([
+      { opacity: 0, transform: "translateY(200px) scale(0.3)" },
+      { opacity: 1, transform: "translateY(0) scale(1)" }
+    ], { duration: 800, fill: "forwards" });
+
+    anim.pause();
+    new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) anim.play(); });
+    }, { threshold: 0.1 }).observe(el);
+  });
+}
