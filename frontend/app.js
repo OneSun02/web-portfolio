@@ -141,3 +141,23 @@ function appendMessage(sender, text, type) {
     msgBox.appendChild(msg);
     msgBox.scrollTop = msgBox.scrollHeight;
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const options = {
+    threshold: 0.2 // phần tử xuất hiện >=20% thì trigger
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      } else {
+        // Nếu muốn hiệu ứng lặp lại khi scroll ra ngoài thì bỏ comment dòng sau
+        // entry.target.classList.remove("show");
+      }
+    });
+  }, options);
+
+  // Quan sát các element
+  document.querySelectorAll(".autoBlur, .autoTakeFull, .autoDisplay")
+    .forEach(el => observer.observe(el));
+});

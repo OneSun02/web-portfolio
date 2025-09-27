@@ -990,60 +990,51 @@ clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20
     }
 }
 
-/* BLUR EFFECT ANIMATION 
+/* -------------------
+BLUR EFFECT ANIMATION
+------------------- */
 .autoBlur {
-    animation: autoBlurAnimation 3s linear both;
-    animation-timeline: view();
-    /* Chú ý: experimental property, chưa support nhiều
+    opacity: 0;
+    filter: blur(40px);
+    transform: translateY(50px);
+    transition: all 1s ease-out;
 }
-*/
-@keyframes autoBlurAnimation {
-    0% {
-        filter: blur(40px);
-    }
-
-    40%,
-    60% {
-        filter: blur(0);
-        transform: translateY(0px);
-        opacity: 1;
-    }
-
-    100% {
-        filter: blur(40px);
-        transform: translateY(-200px);
-        opacity: 0;
-    }
+.autoBlur.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
 }
-/* Take Full Screen Animation 
+
+/* ------------------------
+TAKE FULL SCREEN ANIMATION
+------------------------ */
 .autoTakeFull {
-    animation: autoTakeFullAnimation both;
-    animation-timeline: view(70% 65%); 
+    width: 300px;   /* ví dụ size nhỏ ban đầu */
+    height: 200px;
+    border-radius: 20px;
+    margin: 20px auto;
+    transition: all 1s ease-in-out;
 }
-*/
-@keyframes autoTakeFullAnimation {
-    to {
-        width: 100%;
-        height: 100vh;
-        border-radius: 0;
-        margin-bottom: 100px;
-    }
+.autoTakeFull.show {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    margin-bottom: 100px;
 }
-/* AUTO DISPLAY ANIMATION 
+
+/* ---------------------
+AUTO DISPLAY ANIMATION
+--------------------- */
 .autoDisplay {
-    animation: autoDisplayAnimation both;
-    animation-timeline: view(70% 5%);
-}*/
-@keyframes autoDisplayAnimation {
-    from {
-        opacity: 0;
-        transform: translateY(200px) scale(0.3);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+    opacity: 0;
+    transform: translateY(200px) scale(0.3);
+    transition: all 0.8s ease-out;
 }
+.autoDisplay.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
 /*----------------------------------------------------------*/
 
 .education-section {
