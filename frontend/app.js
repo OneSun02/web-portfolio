@@ -54,14 +54,22 @@ const chatbox = document.getElementById("chatbox");
 const chatToggle = document.getElementById("chatToggle");
 const chatClose = document.getElementById("chatClose");
 
-// Click mở chat
+// Toggle hiển thị khi click nút toggle
 chatToggle.addEventListener("click", () => {
-    chatbox.style.display = "flex";
+    if (chatbox.style.display === "flex") {
+        chatbox.style.display = "none"; // đóng chat
+        chatToggle.classList.remove("active"); // nút về bình thường
+    } else {
+        chatbox.style.display = "flex"; // mở chat
+        chatToggle.classList.add("active"); // giữ hover luôn
+    }
 });
 
-// Click đóng chat
+
+// Click nút close luôn đóng chat
 chatClose.addEventListener("click", () => {
     chatbox.style.display = "none";
+    chatToggle.classList.remove("active");
 });
 
 // -------------------------
@@ -72,8 +80,12 @@ async function sendMessage() {
     const message = input.value.trim();
     if (!message) return;
 
-    appendMessage("Bạn", message, "user"); // user luôn là "Bạn"
+    appendMessage("Bạn", message, "user");
     input.value = "";
+
+    // Lúc này mới show 3 chấm
+    const typing = document.getElementById("typingIndicator");
+    typing.style.display = "flex";
 
     try {
         const res = await fetch("/chat", {
@@ -84,12 +96,16 @@ async function sendMessage() {
 
         const data = await res.json();
 
-        appendMessage("Nhat", data.reply, "ai"); // AI hiển thị là "Nhat"
+        typing.style.display = "none";  // ẩn 3 chấm
+        appendMessage("Nhat", data.reply, "ai");
+
     } catch (err) {
+        typing.style.display = "none";
         appendMessage("System", "❌ Lỗi kết nối backend!", "error");
         console.error(err);
     }
 }
+
 
 // Gắn sự kiện Enter
 document.getElementById("userInput").addEventListener("keypress", (e) => {
@@ -107,39 +123,20 @@ function appendMessage(sender, text, type) {
     const msgBox = document.getElementById("messages");
     const msg = document.createElement("div");
 
-    // Nội dung
     msg.textContent = `${sender}: ${text}`;
-    msg.style.padding = "8px 12px";
-    msg.style.margin = "6px 0";
-    msg.style.borderRadius = "12px";
-    msg.style.maxWidth = "80%";
-    msg.style.wordWrap = "break-word";
-    msg.style.fontFamily = "Arial, sans-serif";
-    msg.style.fontSize = "14px";
 
-    // Kiểu tin nhắn
     if (type === "user") {
-        msg.style.background = "#A0E7E5"; // xanh nhạt
-        msg.style.color = "#000";          // chữ đen
-        msg.style.alignSelf = "flex-end";
-        msg.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)";
+        msg.className = "user-msg";
     } else if (type === "ai") {
-        msg.style.background = "#F0F0F0"; // xám nhạt
-        msg.style.color = "#333";          // chữ tối
-        msg.style.alignSelf = "flex-start";
-        msg.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)";
-    } else { // lỗi / system
-        msg.style.background = "#FF6B6B"; // đỏ nổi bật
-        msg.style.color = "#fff";          // chữ trắng
-        msg.style.fontStyle = "italic";
-        msg.style.alignSelf = "center";
-        msg.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
+        msg.className = "ai-msg";
+    } else {
+        msg.className = "system-msg";
     }
 
-    // Append và scroll
     msgBox.appendChild(msg);
     msgBox.scrollTop = msgBox.scrollHeight;
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver((entries) => {
@@ -162,31 +159,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".autoBlur")
     .forEach(el => observer.observe(el));
-});
-function isMobile() {
-    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const videos = document.querySelectorAll('.info-section video');
-
-    videos.forEach(video => {
-        if (isMobile()) {
-            // Mobile → tạo nút play
-            const btn = document.createElement('button');
-            btn.textContent = 'Play Video';
-            btn.className = 'video-play-btn';
-            btn.style.marginTop = '10px';
-            btn.addEventListener('click', () => {
-                video.play();
-                btn.style.display = 'none';
-            });
-            video.insertAdjacentElement('afterend', btn);
-        } else {
-            // Desktop → autoplay
-            video.play().catch(() => {
-                console.log('Autoplay bị chặn trên desktop (hiếm xảy ra)');
-            });
-        }
-    });
 });

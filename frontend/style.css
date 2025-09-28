@@ -1,76 +1,78 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #000;
-    scroll-behavior: smooth;
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
+  background-color: #000;
+  scroll-behavior: smooth;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
- h1 {
+
+h1 {
   font-family: 'Orbitron', sans-serif !important;
 }
 
 /*----------------------------------------------------------*/
 header {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 40px;
-    z-index: 999;
-    background-color: #4b4b4b5b;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+  z-index: 999;
+  background-color: #4b4b4b5b;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .head-left {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .head-left img {
-    width: 40px;
-    height: 40px;
-    margin-right: 20px;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
 }
 
 .head-left button {
-    padding: 10px 30px;
-    border: none;
-    font-weight: 700;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.3s ease;
+  padding: 10px 30px;
+  border: none;
+  font-weight: 700;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .head-left button:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .head-right {
-    display: flex;
+  display: flex;
 }
 
 .head-right a {
-    text-decoration: none;
-    padding-left: 25px;
-    color: white;
-    font-size: 15px;
+  text-decoration: none;
+  padding-left: 25px;
+  color: white;
+  font-size: 15px;
 }
+
 .menu-toggle {
   display: none;
   font-size: 28px;
@@ -82,7 +84,7 @@ header {
   .head-right {
     display: none;
     flex-direction: column;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0, 0, 0, 0.85);
     position: absolute;
     top: 60px;
     right: 0;
@@ -107,452 +109,493 @@ header {
 /*----------------------------------------------------------*/
 /* Banner Section */
 .banner-section {
-    position: relative;
-    width: 100%;
-    height: 100dvh;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 /* Video nền */
 .banner-section .banner-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-    pointer-events: none;
-    filter: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  pointer-events: none;
+  filter: none;
 }
 
 /* Overlay mờ để chữ nổi bật */
 .banner-section::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.3);
-    z-index: 0;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
 }
 
 /* Info text */
 .banner-info {
-    z-index: 1;
-    position: absolute;
-    top: 10%; /* cách top 10% responsive */
-    left: 2%;
-    max-width: 90%;
+  z-index: 1;
+  position: absolute;
+  top: 10%;
+  /* cách top 10% responsive */
+  left: 2%;
+  max-width: 90%;
 }
 
 /* Tiêu đề chính */
 .banner-info h1 {
-    font-size: clamp(40px, 8vw, 120px); /* responsive: từ 40px đến 120px */
-    font-weight: 900;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: white;
+  font-size: clamp(40px, 8vw, 120px);
+  /* responsive: từ 40px đến 120px */
+  font-weight: 900;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: white;
 }
 
 /* Mô tả */
 .banner-info p {
-    max-width: 400px;
-    font-size: clamp(14px, 1.2vw, 20px);
-    color: white;
-    line-height: 1.4;
+  max-width: 400px;
+  font-size: clamp(14px, 1.2vw, 20px);
+  color: white;
+  line-height: 1.4;
 }
 
 /* Button */
 .banner-info button {
-    background-color: #edff66;
-    border: 2px solid #edff66;
-    padding: 10px 40px;
-    margin-top: 1rem;
-    border-radius: 20px;
-    cursor: pointer;
-    color: black;
-    transition: 0.3s;
-    font-size: clamp(12px, 1vw, 18px);
+  background-color: #edff66;
+  border: 2px solid #edff66;
+  padding: 10px 40px;
+  margin-top: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  color: black;
+  transition: 0.3s;
+  font-size: clamp(12px, 1vw, 18px);
 }
 
 .banner-info button:hover {
-    background-color: transparent;
-    color: white;
-    box-shadow: 0 0 15px #edff66;
+  background-color: transparent;
+  color: white;
+  box-shadow: 0 0 15px #edff66;
 }
 
 /* Text bottom right */
 .portfolio-text {
-    font-size: clamp(60px, 8vw, 120px);
-    position: absolute;
-    right: 2%;
-    bottom: 6%;
-    color: white;
-    margin: 0;
-    z-index: 1;
+  font-size: clamp(60px, 8vw, 120px);
+  position: absolute;
+  right: 2%;
+  bottom: 6%;
+  color: white;
+  margin: 0;
+  z-index: 1;
 }
 
 /* NEXT button */
 .next-btn {
-    width: 150px;
-    height: 150px;
-    background-color: #edff66b6;
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
-    transform: translate(-50%, 50%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    font-size: clamp(20px, 2.5vw, 30px);
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 2;
-    opacity: 0.8;
-    transition: 0.5s;
+  width: 150px;
+  height: 150px;
+  background-color: #edff66b6;
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: clamp(20px, 2.5vw, 30px);
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0.8;
+  transition: 0.5s;
 }
 
 .next-btn:hover {
-    opacity: 1;
-    box-shadow: 0 0 15px rgb(255, 255, 255);
+  opacity: 1;
+  box-shadow: 0 0 15px rgb(255, 255, 255);
 }
 
 /* Scroll-down icon */
 .scroll-down {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: clamp(24px, 4vw, 48px);
-    color: white;
-    cursor: pointer;
-    animation: bounceFade 2s infinite;
-    z-index: 2;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(24px, 4vw, 48px);
+  color: white;
+  cursor: pointer;
+  animation: bounceFade 2s infinite;
+  z-index: 2;
 }
 
 /* Animation bounce */
 @keyframes bounceFade {
-    0% {
-        transform: translateX(-50%) translateY(0);
-        opacity: 0.3;
-    }
-    50% {
-        transform: translateX(-50%) translateY(12px);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-50%) translateY(0);
-        opacity: 0.3;
-    }
+  0% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(12px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.3;
+  }
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .banner-info h1 {
-        font-size: clamp(30px, 10vw, 60px);
-    }
-    .banner-info p {
-        max-width: 250px;
-        font-size: clamp(12px, 3vw, 16px);
-    }
-    .next-btn {
-        width: 120px;
-        height: 120px;
-        font-size: clamp(16px, 4vw, 22px);
-    }
-    .portfolio-text {
-        font-size: clamp(40px, 12vw, 60px);
-    }
-    .banner-section h1{
-        font-size: 36px;
-    }
+  .banner-info h1 {
+    font-size: clamp(30px, 10vw, 60px);
+  }
+
+  .banner-info p {
+    max-width: 250px;
+    font-size: clamp(12px, 3vw, 16px);
+  }
+
+  .next-btn {
+    width: 120px;
+    height: 120px;
+    font-size: clamp(16px, 4vw, 22px);
+  }
+
+  .portfolio-text {
+    font-size: clamp(40px, 12vw, 60px);
+  }
+
+  .banner-section h1 {
+    font-size: 36px;
+  }
 }
 
 
 /*----------------------------------------------------------*/
 
-.skills-section{
-    width: 100%;
-    height: 120vh;
-    text-align: center;
-    overflow: hidden;
-    position: relative;
-}
-.skills-section .slider{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    max-width: 200px;
-    max-height: 250px;
-    top: 10%;
-    left: calc(50% - 100px);
-    transform-style: preserve-3d;
-    transform: perspective(1000px);
-    animation: autoRun 20s linear infinite;
-        overflow: visible !important; /* quan trọng để tooltip không bị cắt */
-    z-index: 10;   
-    padding:50px; 
+.skills-section {
+  width: 100%;
+  height: 120vh;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
 }
 
-@keyframes autoRun{
-    from{
-        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
-    }to{
-        transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
-    }
+.skills-section .slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 250px;
+  top: 10%;
+  left: calc(50% - 100px);
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: autoRun 20s linear infinite;
+  overflow: visible !important;
+  /* quan trọng để tooltip không bị cắt */
+  z-index: 10;
+  padding: 50px;
 }
 
-.skills-section .slider .item{
-    position: absolute;
-    inset: 0 0 0 0;
-    transform: 
-        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-        translateZ(550px);
+@keyframes autoRun {
+  from {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+  }
+
+  to {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+  }
 }
+
+.skills-section .slider .item {
+  position: absolute;
+  inset: 0 0 0 0;
+  transform:
+    rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px);
+}
+
 .skills-section .item .tooltip {
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   padding: 5px 10px;
   border-radius: 6px;
-      border: 2px solid #0b231e; /* xanh ngọc */
-    box-shadow: 0 0 15px #00ffc6, 0 0 30px #00ffc6; /* phát sáng */
+  border: 2px solid #0b231e;
+  /* xanh ngọc */
+  box-shadow: 0 0 15px #00ffc6, 0 0 30px #00ffc6;
+  /* phát sáng */
   white-space: nowrap;
   transition: opacity 0.3s;
-      max-width: 80vw;
-    font-size: 0.8rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-            visibility: visible;
-        margin-top: 5px;         /* khoảng cách dưới ảnh */
-        text-align: center;
-    position: absolute; /* tuyệt đối */
-    bottom: -10px;      /* cách ảnh 30px */
-    left: 50%;
-    transform: translateX(-50%) !important; /* căn giữa */
-    opacity: 1;
-    pointer-events: none;
+  max-width: 80vw;
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  visibility: visible;
+  margin-top: 5px;
+  /* khoảng cách dưới ảnh */
+  text-align: center;
+  position: absolute;
+  /* tuyệt đối */
+  bottom: -10px;
+  /* cách ảnh 30px */
+  left: 50%;
+  transform: translateX(-50%) !important;
+  /* căn giữa */
+  opacity: 1;
+  pointer-events: none;
 }
 
-.skills-section .slider .item img{
-    width: 100%;
-    height: 80%;
-    object-fit: cover;
-    border-radius: 20px;
-    transition: all 0.4s ease; 
-    position: relative;
+.skills-section .slider .item img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  position: relative;
 }
+
 .skills-section .slider .item img:hover {
-    border: 2px solid #0b231e; /* xanh ngọc */
-    box-shadow: 0 0 15px #00ffc6, 0 0 30px #00ffc6; /* phát sáng */
+  border: 2px solid #0b231e;
+  /* xanh ngọc */
+  box-shadow: 0 0 15px #00ffc6, 0 0 30px #00ffc6;
+  /* phát sáng */
 }
-.skills-section .content{
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(1400px, 100vw);
-    height: max-content;
-    padding-bottom: 100px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1;
+
+.skills-section .content {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1400px, 100vw);
+  height: max-content;
+  padding-bottom: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
 }
-.skills-section .content h1{
-    font-size: 11em;
-    line-height: 1em;
-    color: #25283B;
-    position: relative;
+
+.skills-section .content h1 {
+  font-size: 11em;
+  line-height: 1em;
+  color: #25283B;
+  position: relative;
 }
-.skills-section .content h1::after{
-    position: absolute;
-    inset: 0 0 0 0;
-    content: attr(data-content);
-    z-index: 2;
-    -webkit-text-stroke: 2px #d2d2d2;
-    color: transparent;
+
+.skills-section .content h1::after {
+  position: absolute;
+  inset: 0 0 0 0;
+  content: attr(data-content);
+  z-index: 2;
+  -webkit-text-stroke: 2px #d2d2d2;
+  color: transparent;
 }
-.skills-section .content .author{
-    text-align: right;
-    max-width: 200px;
+
+.skills-section .content .author {
+  text-align: right;
+  max-width: 200px;
 }
-.skills-section .content h2{
-  font-family: 'Anton', sans-serif; /* thay Impact -> Anton để hiển thị tiếng Việt */
+
+.skills-section .content h2 {
+  font-family: 'Anton', sans-serif;
+  /* thay Impact -> Anton để hiển thị tiếng Việt */
 }
+
 .skills-section .content .model {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url(img/robot-model.png) no-repeat top center;
-    background-size: auto 100%;
-    z-index: 1;
-    overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(img/robot-model.png) no-repeat top center;
+  background-size: auto 100%;
+  z-index: 1;
+  overflow: hidden;
 }
 
 .skills-section .content .model::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        180deg,
-        transparent 45%,
-        rgba(228, 225, 81, 0.9) 50%, /* lõi trắng sáng */
-        transparent 55%
-    );
-    background-size: 100% 200%;
-    animation: scanFace 3s linear infinite;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+      transparent 45%,
+      rgba(228, 225, 81, 0.9) 50%,
+      /* lõi trắng sáng */
+      transparent 55%);
+  background-size: 100% 200%;
+  animation: scanFace 3s linear infinite;
 
-    /* chỉ hiện trong vùng PNG */
-    -webkit-mask-image: url(img/robot-model.png);
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: top center;
-    -webkit-mask-size: auto 100%;
-    mask-image: url(img/robot-model.png);
-    mask-repeat: no-repeat;
-    mask-position: top center;
-    mask-size: auto 100%;
+  /* chỉ hiện trong vùng PNG */
+  -webkit-mask-image: url(img/robot-model.png);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: top center;
+  -webkit-mask-size: auto 100%;
+  mask-image: url(img/robot-model.png);
+  mask-repeat: no-repeat;
+  mask-position: top center;
+  mask-size: auto 100%;
 
-    mix-blend-mode: screen; /* ánh sáng blend với ảnh */
-    pointer-events: none;
+  mix-blend-mode: screen;
+  /* ánh sáng blend với ảnh */
+  pointer-events: none;
 }
 
 @keyframes scanFace {
-    0%   { background-position: 0 -100%; }
-    100% { background-position: 0 200%; }
+  0% {
+    background-position: 0 -100%;
+  }
+
+  100% {
+    background-position: 0 200%;
+  }
 }
 
 @media screen and (max-width: 1023px) {
-    .skills-section .slider {
-        width: 160px;
-        height: 200px;
-        left: calc(50% - 80px);
-        overflow: visible; /* tooltip sẽ hiển thị ra ngoài */
-        z-index: 10; /* đảm bảo slider dưới tooltip */
-    }
-
-    .skills-section .slider .item {
-        transform: 
-            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-            translateZ(300px);
-    }
-
-    .skills-section .slider .item img {
-        width: 75%;
-    }
-
-    .skills-section .content h1 {
-        text-align: center;
-        width: 100%;
-        text-shadow: 0 10px 20px #000;
-        font-size: 7em;
-    }
-
-    .skills-section .content .author {
-        color: #fff;
-        text-shadow: 0 10px 20px #000;
-        z-index: 2;
-        max-width: unset;
-        width: 100%;
-        text-align: center;
-        padding: 0 30px;
-    }
-}
-@media screen and (max-width: 767px) {
-    .skills-section .content h1 {
-        font-size: 5em;
-    }
-        .skills-section .slider .item img {
-        width: 65%;
-    }
-    .skills-section .slider .item {
-        transform: 
-            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-            translateZ(200px);
-    }
+  .skills-section .slider {
+    width: 160px;
+    height: 200px;
+    left: calc(50% - 80px);
+    overflow: visible;
+    /* tooltip sẽ hiển thị ra ngoài */
+    z-index: 10;
+    /* đảm bảo slider dưới tooltip */
   }
+
+  .skills-section .slider .item {
+    transform:
+      rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(300px);
+  }
+
+  .skills-section .slider .item img {
+    width: 75%;
+  }
+
+  .skills-section .content h1 {
+    text-align: center;
+    width: 100%;
+    text-shadow: 0 10px 20px #000;
+    font-size: 7em;
+  }
+
+  .skills-section .content .author {
+    color: #fff;
+    text-shadow: 0 10px 20px #000;
+    z-index: 2;
+    max-width: unset;
+    width: 100%;
+    text-align: center;
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .skills-section .content h1 {
+    font-size: 5em;
+  }
+
+  .skills-section .slider .item img {
+    width: 65%;
+  }
+
+  .skills-section .slider .item {
+    transform:
+      rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(200px);
+  }
+}
+
 /*----------------------------------------------------------*/
 .about-section {
-    width: 100%;
-    height: 100%;
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
+  width: 100%;
+  height: 100%;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
 }
 
 .image-box {
-    width: 360px;
-    height: 510px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50px;
+  width: 360px;
+  height: 510px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
 }
 
 .image-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .about-section h1 {
-    font-size: 48px;
-    background: white;
-    background-size: 200%;
-    background-clip: text;
+  font-size: 48px;
+  background: white;
+  background-size: 200%;
+  background-clip: text;
 }
 
 .about-section h2 {
-  font-family: 'Anton', sans-serif; /* thay Impact -> Anton để hiển thị tiếng Việt */
-    font-weight: 900;
-    font-size: 100px;
-    max-width: 1150px;
-    text-align: center;
-    margin: 25px 0;
-    text-transform: uppercase;
-    background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
-    background-size: 200%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: animate-gradient 2.5s linear infinite;
+  font-family: 'Anton', sans-serif;
+  /* thay Impact -> Anton để hiển thị tiếng Việt */
+  font-weight: 900;
+  font-size: 100px;
+  max-width: 1150px;
+  text-align: center;
+  margin: 25px 0;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate-gradient 2.5s linear infinite;
 }
 
 @keyframes animate-gradient {
-    to {
-        background-position: 200%;
-    }
+  to {
+    background-position: 200%;
+  }
 }
 
 .about-section span {
-    margin: 10px;
-    text-align: center;
+  margin: 10px;
+  text-align: center;
 }
 
 .about-section p {
-    color: gray;
-    max-width: 425px;
-    text-align: center;
-    line-height: 25px;
+  color: gray;
+  max-width: 425px;
+  text-align: center;
+  line-height: 25px;
 }
+
 @media (max-width: 960px) {
-    .about-section h2 {
-        font-size: 50px;
-    }
-    .image-box {
-        width: 75%;
-        aspect-ratio: 360/510;
-        border-radius: 15px;
-    }
-    .about-section h1{
-        font-size:36px;
-    }
+  .about-section h2 {
+    font-size: 50px;
+  }
+
+  .image-box {
+    width: 75%;
+    aspect-ratio: 360/510;
+    border-radius: 15px;
+  }
+
+  .about-section h1 {
+    font-size: 36px;
+  }
 }
 
 /*----------------------------------------------------------*/
@@ -566,14 +609,14 @@ header {
 }
 
 .info-section h1 {
-    font-size: 48px;
-    background: white;
-    background-size: 200%;
-    background-clip: text;
+  font-size: 48px;
+  background: white;
+  background-size: 200%;
+  background-clip: text;
   margin-bottom: 0;
 }
 
-.info-section > p {
+.info-section>p {
   margin-top: 5px;
   color: gray;
   max-width: 400px;
@@ -588,8 +631,9 @@ header {
 /* Gradient title */
 .project-title {
   margin-bottom: 15px;
-    font-family: 'Anton', sans-serif; /* thay Impact -> Anton để hiển thị tiếng Việt */
-    font-weight: 900;
+  font-family: 'Anton', sans-serif;
+  /* thay Impact -> Anton để hiển thị tiếng Việt */
+  font-weight: 900;
   font-size: 36px;
   background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
   background-size: 200%;
@@ -619,7 +663,7 @@ header {
   transition: 0.5s;
 }
 
-.card video {
+.card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -678,53 +722,62 @@ header {
 }
 
 .special-layout .card:nth-child(1) {
-  grid-column: 1 / span 2; /* full width */
+  grid-column: 1 / span 2;
+  /* full width */
   height: 60vh;
 }
 
 .special-layout .card:nth-child(2) {
   grid-column: 1;
-  grid-row: 2; /* nằm dưới card 1, bên trái */
+  grid-row: 2;
+  /* nằm dưới card 1, bên trái */
   height: 40vh;
 }
 
 .special-layout .card:nth-child(3) {
   grid-column: 1;
-  grid-row: 3; /* nằm dưới card 2, bên trái */
+  grid-row: 3;
+  /* nằm dưới card 2, bên trái */
   height: 40vh;
 }
 
 .special-layout .card:nth-child(4) {
   grid-column: 2;
-  grid-row: 2 / span 2; /* chiếm cùng chiều cao với card 2 + 3 */
+  grid-row: 2 / span 2;
+  /* chiếm cùng chiều cao với card 2 + 3 */
   height: 83vh;
 }
+
 @media (max-width: 1024px) and (min-width: 769px) {
- /* Bố cục đặc biệt */
-.special-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 40vh;
-  gap: 20px;
-}
 
-.special-layout .card:nth-child(2) {
-  grid-column: 1;
-  grid-row: 2; /* nằm dưới card 1, bên trái */
-  height: 30vh;
-}
+  /* Bố cục đặc biệt */
+  .special-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 40vh;
+    gap: 20px;
+  }
 
-.special-layout .card:nth-child(3) {
-  grid-column: 1;
-  grid-row: 3; /* nằm dưới card 2, bên trái */
-  height: 30vh;
-}
+  .special-layout .card:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+    /* nằm dưới card 1, bên trái */
+    height: 30vh;
+  }
 
-.special-layout .card:nth-child(4) {
-  grid-column: 2;
-  grid-row: 2 / span 2; /* chiếm cùng chiều cao với card 2 + 3 */
-  height: 63vh;
-}
+  .special-layout .card:nth-child(3) {
+    grid-column: 1;
+    grid-row: 3;
+    /* nằm dưới card 2, bên trái */
+    height: 30vh;
+  }
+
+  .special-layout .card:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    /* chiếm cùng chiều cao với card 2 + 3 */
+    height: 63vh;
+  }
 }
 
 
@@ -752,14 +805,15 @@ header {
   .special-layout .card:nth-child(4) {
     grid-column: 1;
     grid-row: auto;
-    height: auto; /* tự co theo nội dung */
+    height: auto;
+    /* tự co theo nội dung */
   }
 
   .card {
     height: auto;
   }
 
-  .card video {
+  .card img {
     height: 200px;
   }
 
@@ -772,232 +826,253 @@ header {
     padding: 8px 20px;
     font-size: 14px;
   }
-  .info-section h1{
-    font-size:36px ;
+
+  .info-section h1 {
+    font-size: 36px;
   }
 }
 
 /*----------------------------------------------------------*/
 .contact-section {
-    position: relative;
-    width: 100%;
-    margin-top: 100px;
-    margin-bottom: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-            overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  overflow-x: hidden;
 
 }
 
 .contact-section .img1 {
-    position: absolute;
-    top: 10%;
-    right: 20px;
-    height: 400px;
-clip-path: polygon(41% 0, 100% 0%, 77% 100%, 0% 100%);
-      object-fit: cover;
+  position: absolute;
+  top: 10%;
+  right: 20px;
+  height: 400px;
+  clip-path: polygon(41% 0, 100% 0%, 77% 100%, 0% 100%);
+  object-fit: cover;
 
 
 }
 
 .contact-section .img2 {
-    position: absolute;
-    left: 50px;
-    top: 10px;
-    height: 200px;
-    clip-path: polygon(18% 0, 59% 0, 100% 50%, 86% 100%, 37% 100%, 10% 51%);
+  position: absolute;
+  left: 50px;
+  top: 10px;
+  height: 200px;
+  clip-path: polygon(18% 0, 59% 0, 100% 50%, 86% 100%, 37% 100%, 10% 51%);
   object-fit: cover;
 
 }
 
 .contact-section .img3 {
-    position: absolute;
-    left: 5%;
-    bottom: 5%;
-    height: 250px;
-    width: 250px;
-clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20%);  object-fit: cover;
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  height: 250px;
+  width: 250px;
+  clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20%);
+  object-fit: cover;
 
 }
 
 .contact-section h1 {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 48px;
-    background: white;
-    background-size: 200%;
-    background-clip: text;
-    margin: 100px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 48px;
+  background: white;
+  background-size: 200%;
+  background-clip: text;
+  margin: 100px;
 }
 
 .contact-section h2 {
-      font-family: 'Anton', sans-serif; /* thay Impact -> Anton để hiển thị tiếng Việt */
-    font-weight: 900;
-    font-size: 70px;
-    max-width: 550px;
-    text-align: center;
-    background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
-    background-size: 200%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: animate-gradient 2.5s linear infinite;
+  font-family: 'Anton', sans-serif;
+  /* thay Impact -> Anton để hiển thị tiếng Việt */
+  font-weight: 900;
+  font-size: 70px;
+  max-width: 550px;
+  text-align: center;
+  background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate-gradient 2.5s linear infinite;
 }
 
 .contact-section button {
-    margin-top: 30px;
-    background-color: #edff66;
-    border: 1px solid #edff66;
-    padding: 10px 25px;
-    border-radius: 20px;
-    cursor: pointer;
-    color: black;
-    transition: 0.3s;
+  margin-top: 30px;
+  background-color: #edff66;
+  border: 1px solid #edff66;
+  padding: 10px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: black;
+  transition: 0.3s;
 }
 
 .contact-section button:hover {
-    background-color: transparent;
-    color: white;
-    box-shadow: 0 0 15px #edff66;
+  background-color: transparent;
+  color: white;
+  box-shadow: 0 0 15px #edff66;
 }
+
 @media (max-width: 1220px) {
-        .contact-section .img1{
-        height:250px;
-        width:220px;
-        right:0;
-        top:20px;
-    }
-    .contact-section .img2{
-        top:30px;
-        left:-40px;
-        width:220px;
-        height:220px;
-    }
-    .contact-section .img3{
-        left:-60px;
-        bottom:0;
-        width:220px;
-        height:220px;
-    }
+  .contact-section .img1 {
+    height: 250px;
+    width: 220px;
+    right: 0;
+    top: 20px;
+  }
+
+  .contact-section .img2 {
+    top: 30px;
+    left: -40px;
+    width: 220px;
+    height: 220px;
+  }
+
+  .contact-section .img3 {
+    left: -60px;
+    bottom: 0;
+    width: 220px;
+    height: 220px;
+  }
 }
+
 @media (max-width: 960px) {
 
-    .contact-section .img1{
-        height:200px;
-        width:180px;
-        right:0;
-        top:20px;
-    }
-    .contact-section .img2{
-        top:30px;
-        left:-40px;
-        width:180px;
-        height:200px;
-    }
-    .contact-section .img3{
-        left:-60px;
-        bottom:0;
-        width:180px;
-        height:200px;
-    }
+  .contact-section .img1 {
+    height: 200px;
+    width: 180px;
+    right: 0;
+    top: 20px;
+  }
+
+  .contact-section .img2 {
+    top: 30px;
+    left: -40px;
+    width: 180px;
+    height: 200px;
+  }
+
+  .contact-section .img3 {
+    left: -60px;
+    bottom: 0;
+    width: 180px;
+    height: 200px;
+  }
 }
+
 @media (max-width: 768px) {
-    .contact-section h2 {
-        font-size: 50px;
-        max-width: 300px;
-    }
-    .contact-section .img1{
-        height:200px;
-        width:150px;
-        right:-40px;
-        top:20px;
-    }
-    .contact-section .img2{
-        top:30px;
-        left:-70px;
-        width:150px;
-        height:180px;
-    }
-    .contact-section .img3{
-        left:-60px;
-        bottom:0;
-        width:150px;
-        height:180px;
-    }
-    .contact-section h1{
-        font-size:36px ;
-    }
+  .contact-section h2 {
+    font-size: 50px;
+    max-width: 300px;
+  }
+
+  .contact-section .img1 {
+    height: 200px;
+    width: 150px;
+    right: -60px;
+    top: 20px;
+  }
+
+  .contact-section .img2 {
+    top: 30px;
+    left: -80px;
+    width: 150px;
+    height: 180px;
+  }
+
+  .contact-section .img3 {
+    left: -80px;
+    bottom: 0;
+    width: 150px;
+    height: 180px;
+  }
+
+  .contact-section h1 {
+    font-size: 36px;
+  }
 }
 
 /*-----------------------------------------------------*/
 /* Footer Section */
 /* Footer Section */
 .footer {
-    width: 100%;
-    padding: 40px 0;
-    background-color: #0b231e; /* màu nền tối */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+  width: 100%;
+  padding: 40px 0;
+  background-color: #0b231e;
+  /* màu nền tối */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 .footer h2 {
-    color: #fff;
-    font-size: 28px;
-    margin-bottom: 20px;
-    font-weight: 600;
+  color: #fff;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 /* Icon list */
 .footer ul {
-    display: flex;
-    gap: 25px; /* khoảng cách giữa các icon */
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  gap: 25px;
+  /* khoảng cách giữa các icon */
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .footer ul li a {
-    background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
-    background-size: 200%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: animate-gradient 2.5s linear infinite;    font-size: 24px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate-gradient 2.5s linear infinite;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Hover effect */
 .footer ul li a:hover {
-    transform: scale(1.2); /* phóng to nhẹ */
+  transform: scale(1.2);
+  /* phóng to nhẹ */
 }
 
 /* Responsive: nhỏ hơn 480px */
 @media (max-width: 480px) {
-    .footer h2 {
-        font-size: 22px;
-    }
-    .footer ul {
-        gap: 15px;
-    }
-    .footer ul li a {
-        font-size: 20px;
-    }
+  .footer h2 {
+    font-size: 22px;
+  }
+
+  .footer ul {
+    gap: 15px;
+  }
+
+  .footer ul li a {
+    font-size: 20px;
+  }
 }
 
 /* BLUR EFFECT ANIMATION */
 @keyframes autoBlurAnimation {
-  0% { 
+  0% {
     filter: blur(40px);
     opacity: 0;
     transform: translateY(50px);
   }
-  100% { 
+
+  100% {
     filter: blur(0);
     opacity: 1;
     transform: translateY(0);
@@ -1005,38 +1080,45 @@ clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20
 }
 
 
-.autoBlur { opacity: 0; }
+.autoBlur {
+  opacity: 0;
+}
+
 .autoBlur.animate {
   animation: autoBlurAnimation 1.5s ease-in-out both;
 }
+
 /* Take Full Screen Animation */
 .autoTakeFull {
-    animation: autoTakeFullAnimation both;
-    animation-timeline: view(70% 65%); 
+  animation: autoTakeFullAnimation both;
+  animation-timeline: view(70% 65%);
 }
 
 @keyframes autoTakeFullAnimation {
-    to {
-        width: 100%;
-        height: 100vh;
-        border-radius: 0;
-        margin-bottom: 100px;
-    }
+  to {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    margin-bottom: 100px;
+  }
 }
+
 /* AUTO DISPLAY ANIMATION }*/
 .autoDisplay {
-    animation: autoDisplayAnimation both;
-    animation-timeline: view(70% 5%);
+  animation: autoDisplayAnimation both;
+  animation-timeline: view(70% 5%);
 }
+
 @keyframes autoDisplayAnimation {
-    from {
-        opacity: 0;
-        transform: translateY(200px) scale(0.3);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(200px) scale(0.3);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /*----------------------------------------------------------*/
@@ -1048,7 +1130,7 @@ clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20
 }
 
 .education-section h1 {
- font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 48px;
   background: white;
   background-size: 200%;
@@ -1063,7 +1145,7 @@ clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20
   color: #fff;
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -1088,7 +1170,8 @@ clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20
 }
 
 .edu-content h2 {
-  font-family: 'Anton', sans-serif; /* thay Impact -> Anton để hiển thị tiếng Việt */
+  font-family: 'Anton', sans-serif;
+  /* thay Impact -> Anton để hiển thị tiếng Việt */
   font-size: 36px;
   background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
   background-size: 200%;
@@ -1134,12 +1217,16 @@ clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 /* Responsive cho Education Section */
 @media (max-width: 1024px) {
   .edu-card {
-    flex-direction: column; /* Chuyển sang cột */
+    flex-direction: column;
+    /* Chuyển sang cột */
     text-align: center;
   }
 
@@ -1150,11 +1237,13 @@ clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20
   }
 
   .edu-content h2 {
-    font-size: 36px; /* Giảm kích thước chữ */
+    font-size: 36px;
+    /* Giảm kích thước chữ */
   }
 
   .edu-badge img {
-    width: 100px; /* Thu nhỏ logo */
+    width: 100px;
+    /* Thu nhỏ logo */
   }
 }
 
@@ -1205,18 +1294,18 @@ clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20
     font-size: 0.7rem;
     padding: 3px 8px;
   }
-  .education-section h1{
-    font-size:36px;
+
+  .education-section h1 {
+    font-size: 36px;
   }
 }
-/* --------------------
-Chat Toggle Button
--------------------- */
+
+/* -------------------- Chat Toggle Button -------------------- */
 #chatToggle {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #007bff;
+  background: #02d79a;
   color: white;
   border: none;
   border-radius: 50px;
@@ -1224,77 +1313,198 @@ Chat Toggle Button
   cursor: pointer;
   font-size: 18px;
   z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  opacity: 0.8;
+  transition: 0.5s;
+}
+
+/* trạng thái hover thông thường */
+#chatToggle:hover {
+transform: scale(1.1);
+  opacity: 1;
+  box-shadow: 0 0 15px #00ffc6, 0 0 30px #00ffc6;
+}
+
+/* trạng thái “mở chat” */
+#chatToggle.active {
+  transform: scale(1.1);
+
+  opacity: 1;
+  box-shadow: 0 0 15px #00ffc6, 0 0 30px #00ffc6;
 }
 
 /* --------------------
-Chatbox container
+Chatbox container (dark)
 -------------------- */
 #chatbox {
   position: fixed;
-  bottom: 80px; /* trên nút chat */
+  bottom: 80px;
   right: 20px;
-  width: 300px;
+  width: 320px;
   max-width: 90%;
-  height: 400px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  display: none; /* mặc định ẩn */
+  height: 450px;
+  background: #1e1e1e;
+  /* nền dark */
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  display: none;
   flex-direction: column;
   overflow: hidden;
   z-index: 999;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f0f0;
 }
 
 /* Chat header */
 #chatHeader {
-  background: #007bff;
-  color: white;
-  padding: 10px;
-  font-weight: bold;
+  background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate-gradient 2.5s linear infinite;
+  padding: 12px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: move; /* có thể add drag sau này */
+  cursor: move;
+  font-size: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Anton', sans-serif;
 }
 
 /* Close button */
 #chatClose {
   cursor: pointer;
-  font-size: 20px;
+  font-size: 40px;
+  transition: transform 0.2s;
 }
 
 /* Messages container */
 #messages {
   flex: 1;
-  padding: 10px;
+  padding: 12px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  background: #f7f7f7;
+  gap: 8px;
+  background: #2a2a2a;
+  /* dark bg */
+  scrollbar-width: thin;
+  scrollbar-color: #555 transparent;
+}
+
+#messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 3px;
 }
 
 /* Input area */
 #chatInput {
   display: flex;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #444;
+  padding: 8px;
+  background: #1e1e1e;
 }
 
 #chatInput input {
   flex: 1;
-  padding: 8px;
-  border: none;
+  padding: 10px 12px;
+  border: 1px solid #555;
+  border-radius: 20px;
   outline: none;
   font-size: 14px;
+  background: #2a2a2a;
+  color: #f0f0f0;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+#chatInput input:focus {
+  border-color: #4facfe;
 }
 
 #chatInput button {
-  padding: 8px 12px;
+  margin-left: 8px;
+  padding: 0 16px;
   border: none;
-  background: #007bff;
+  background: #4facfe;
   color: white;
+  border-radius: 20px;
   cursor: pointer;
   font-size: 14px;
+  transition: background 0.2s;
+}
+
+#chatInput button:hover {
+  background: #00f2fe;
+}
+
+/* Typing indicator */
+#typingIndicator {
+  display: none !important;
+  align-self: flex-start;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #444;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+  display: flex;
+  gap: 6px;
+}
+
+#typingIndicator span {
+  width: 8px;
+  height: 8px;
+  background: #4facfe;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+#typingIndicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+#typingIndicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Messages bubbles */
+.user-msg {
+  background: #018ba7;
+  /* xanh đậm */
+  color: #f0f0f0;
+  align-self: flex-end;
+  padding: 10px 14px;
+  border-radius: 18px 18px 0 18px;
+  max-width: 75%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  word-wrap: break-word;
+  font-size: 14px;
+}
+
+.ai-msg {
+  background: #3a3a3a;
+  /* xám đậm */
+  color: #f0f0f0;
+  align-self: flex-start;
+  padding: 10px 14px;
+  border-radius: 18px 18px 18px 0;
+  max-width: 75%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  word-wrap: break-word;
+  font-size: 14px;
+}
+
+.system-msg {
+  background: #d62828;
+  color: #fff;
+  font-style: italic;
+  align-self: center;
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
