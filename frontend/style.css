@@ -24,19 +24,23 @@ h1 {
 
 /*----------------------------------------------------------*/
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
-  right: 0;
   left: 0;
+  right: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 40px;
   z-index: 999;
-  background-color: #4b4b4b5b;
+  background-color: rgba(75, 75, 75, 0.36);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  transition: top 0.3s ease; /* tạo animation trượt */
 }
+
+
 
 .head-left {
   display: flex;
@@ -90,6 +94,7 @@ header {
     right: 0;
     width: 200px;
     padding: 20px;
+    gap:10px;
   }
 
   .head-right.show {
@@ -106,8 +111,7 @@ header {
   }
 }
 
-/*----------------------------------------------------------*/
-/* Banner Section */
+/*-------banner-section---------------------------------------------------*/
 .banner-section {
   position: relative;
   width: 100%;
@@ -115,7 +119,6 @@ header {
   overflow: hidden;
 }
 
-/* Video nền */
 .banner-section .banner-video {
   position: absolute;
   inset: 0;
@@ -128,7 +131,6 @@ header {
   filter: none;
 }
 
-/* Overlay mờ để chữ nổi bật */
 .banner-section::after {
   content: '';
   position: absolute;
@@ -136,28 +138,21 @@ header {
   background: rgba(0, 0, 0, 0.3);
   z-index: 0;
 }
-
-/* Info text */
 .banner-info {
   z-index: 1;
   position: absolute;
   top: 10%;
-  /* cách top 10% responsive */
   left: 2%;
   max-width: 90%;
 }
 
-/* Tiêu đề chính */
 .banner-info h1 {
   font-size: clamp(40px, 8vw, 120px);
-  /* responsive: từ 40px đến 120px */
   font-weight: 900;
   margin-top: 0;
   margin-bottom: 1rem;
   color: white;
 }
-
-/* Mô tả */
 .banner-info p {
   max-width: 400px;
   font-size: clamp(14px, 1.2vw, 20px);
@@ -165,7 +160,6 @@ header {
   line-height: 1.4;
 }
 
-/* Button */
 .banner-info button {
   background-color: #edff66;
   border: 2px solid #edff66;
@@ -184,7 +178,6 @@ header {
   box-shadow: 0 0 15px #edff66;
 }
 
-/* Text bottom right */
 .portfolio-text {
   font-size: clamp(60px, 8vw, 120px);
   position: absolute;
@@ -195,7 +188,6 @@ header {
   z-index: 1;
 }
 
-/* NEXT button */
 .next-btn {
   width: 150px;
   height: 150px;
@@ -221,8 +213,6 @@ header {
   opacity: 1;
   box-shadow: 0 0 15px rgb(255, 255, 255);
 }
-
-/* Scroll-down icon */
 .scroll-down {
   position: absolute;
   bottom: 20px;
@@ -235,7 +225,6 @@ header {
   z-index: 2;
 }
 
-/* Animation bounce */
 @keyframes bounceFade {
   0% {
     transform: translateX(-50%) translateY(0);
@@ -253,7 +242,6 @@ header {
   }
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .banner-info h1 {
     font-size: clamp(30px, 10vw, 60px);
@@ -280,7 +268,7 @@ header {
 }
 
 
-/*----------------------------------------------------------*/
+/*-----------skills-section-----------------------------------------------*/
 
 .skills-section {
   width: 100%;
@@ -302,7 +290,6 @@ header {
   transform: perspective(1000px);
   animation: autoRun 20s linear infinite;
   overflow: visible !important;
-  /* quan trọng để tooltip không bị cắt */
   z-index: 10;
   padding: 50px;
 }
@@ -330,9 +317,7 @@ header {
   padding: 5px 10px;
   border-radius: 6px;
   border: 2px solid #0b231e;
-  /* xanh ngọc */
   box-shadow: 0 0 15px #00ffc6, 0 0 30px #00ffc6;
-  /* phát sáng */
   white-space: nowrap;
   transition: opacity 0.3s;
   max-width: 80vw;
@@ -341,15 +326,11 @@ header {
   overflow: hidden;
   visibility: visible;
   margin-top: 5px;
-  /* khoảng cách dưới ảnh */
   text-align: center;
   position: absolute;
-  /* tuyệt đối */
   bottom: -10px;
-  /* cách ảnh 30px */
   left: 50%;
   transform: translateX(-50%) !important;
-  /* căn giữa */
   opacity: 1;
   pointer-events: none;
 }
@@ -365,9 +346,7 @@ header {
 
 .skills-section .slider .item img:hover {
   border: 2px solid #0b231e;
-  /* xanh ngọc */
   box-shadow: 0 0 15px #00ffc6, 0 0 30px #00ffc6;
-  /* phát sáng */
 }
 
 .skills-section .content {
@@ -408,7 +387,6 @@ header {
 
 .skills-section .content h2 {
   font-family: 'Anton', sans-serif;
-  /* thay Impact -> Anton để hiển thị tiếng Việt */
 }
 
 .skills-section .content .model {
@@ -430,12 +408,9 @@ header {
   background: linear-gradient(180deg,
       transparent 45%,
       rgba(228, 225, 81, 0.9) 50%,
-      /* lõi trắng sáng */
       transparent 55%);
   background-size: 100% 200%;
   animation: scanFace 3s linear infinite;
-
-  /* chỉ hiện trong vùng PNG */
   -webkit-mask-image: url(img/robot-model.png);
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: top center;
@@ -444,9 +419,7 @@ header {
   mask-repeat: no-repeat;
   mask-position: top center;
   mask-size: auto 100%;
-
   mix-blend-mode: screen;
-  /* ánh sáng blend với ảnh */
   pointer-events: none;
 }
 
@@ -466,9 +439,7 @@ header {
     height: 200px;
     left: calc(50% - 80px);
     overflow: visible;
-    /* tooltip sẽ hiển thị ra ngoài */
     z-index: 10;
-    /* đảm bảo slider dưới tooltip */
   }
 
   .skills-section .slider .item {
@@ -513,7 +484,7 @@ header {
   }
 }
 
-/*----------------------------------------------------------*/
+/*-----------about-section-----------------------------------------------*/
 .about-section {
   width: 100%;
   height: 100%;
@@ -549,7 +520,6 @@ header {
 
 .about-section h2 {
   font-family: 'Anton', sans-serif;
-  /* thay Impact -> Anton để hiển thị tiếng Việt */
   font-weight: 900;
   font-size: 100px;
   max-width: 1150px;
@@ -598,7 +568,7 @@ header {
   }
 }
 
-/*----------------------------------------------------------*/
+/*----------project-section------------------------------------------------*/
 
 .info-section {
   display: flex;
@@ -622,17 +592,12 @@ header {
   max-width: 400px;
   line-height: 25px;
 }
-
-/* Group wrapper */
 .project-group {
   margin-top: 50px;
 }
-
-/* Gradient title */
 .project-title {
   margin-bottom: 15px;
   font-family: 'Anton', sans-serif;
-  /* thay Impact -> Anton để hiển thị tiếng Việt */
   font-weight: 900;
   font-size: 36px;
   background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
@@ -643,7 +608,6 @@ header {
   animation: animate-gradient 2.5s linear infinite;
 }
 
-/* Grid layout cho group */
 .special-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -652,7 +616,6 @@ header {
   width: 100%;
 }
 
-/* Card chung */
 .card {
   position: relative;
   width: 100%;
@@ -669,7 +632,6 @@ header {
   object-fit: cover;
 }
 
-/* Overlay chứa text */
 .card .card-text {
   position: absolute;
   top: 0;
@@ -689,7 +651,6 @@ header {
   max-width: 250px;
 }
 
-/* Button */
 .card button {
   position: absolute;
   bottom: 5%;
@@ -713,7 +674,6 @@ header {
   box-shadow: 0 0 15px rgb(211, 211, 211);
 }
 
-/* Bố cục đặc biệt */
 .special-layout {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -723,34 +683,28 @@ header {
 
 .special-layout .card:nth-child(1) {
   grid-column: 1 / span 2;
-  /* full width */
   height: 60vh;
 }
 
 .special-layout .card:nth-child(2) {
   grid-column: 1;
   grid-row: 2;
-  /* nằm dưới card 1, bên trái */
   height: 40vh;
 }
 
 .special-layout .card:nth-child(3) {
   grid-column: 1;
   grid-row: 3;
-  /* nằm dưới card 2, bên trái */
   height: 40vh;
 }
 
 .special-layout .card:nth-child(4) {
   grid-column: 2;
   grid-row: 2 / span 2;
-  /* chiếm cùng chiều cao với card 2 + 3 */
   height: 83vh;
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
-
-  /* Bố cục đặc biệt */
   .special-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -761,37 +715,30 @@ header {
   .special-layout .card:nth-child(2) {
     grid-column: 1;
     grid-row: 2;
-    /* nằm dưới card 1, bên trái */
     height: 30vh;
   }
 
   .special-layout .card:nth-child(3) {
     grid-column: 1;
     grid-row: 3;
-    /* nằm dưới card 2, bên trái */
     height: 30vh;
   }
 
   .special-layout .card:nth-child(4) {
     grid-column: 2;
     grid-row: 2 / span 2;
-    /* chiếm cùng chiều cao với card 2 + 3 */
     height: 63vh;
   }
 }
-
 
 @media (max-width: 768px) {
   .info-section {
     width: 95%;
     margin: 50px auto 0 auto;
   }
-
   .project-title {
     font-size: 32px;
   }
-
-  /* Chuyển grid thành 1 cột */
   .special-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -806,7 +753,6 @@ header {
     grid-column: 1;
     grid-row: auto;
     height: auto;
-    /* tự co theo nội dung */
   }
 
   .card {
@@ -831,298 +777,7 @@ header {
     font-size: 36px;
   }
 }
-
-/*----------------------------------------------------------*/
-.contact-section {
-  position: relative;
-  width: 100%;
-  margin-top: 100px;
-  margin-bottom: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  overflow-x: hidden;
-
-}
-
-.contact-section .img1 {
-  position: absolute;
-  top: 10%;
-  right: 20px;
-  height: 400px;
-  clip-path: polygon(41% 0, 100% 0%, 77% 100%, 0% 100%);
-  object-fit: cover;
-
-
-}
-
-.contact-section .img2 {
-  position: absolute;
-  left: 50px;
-  top: 10px;
-  height: 200px;
-  clip-path: polygon(18% 0, 59% 0, 100% 50%, 86% 100%, 37% 100%, 10% 51%);
-  object-fit: cover;
-
-}
-
-.contact-section .img3 {
-  position: absolute;
-  left: 5%;
-  bottom: 5%;
-  height: 250px;
-  width: 250px;
-  clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20%);
-  object-fit: cover;
-
-}
-
-.contact-section h1 {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 48px;
-  background: white;
-  background-size: 200%;
-  background-clip: text;
-  margin: 100px;
-}
-
-.contact-section h2 {
-  font-family: 'Anton', sans-serif;
-  /* thay Impact -> Anton để hiển thị tiếng Việt */
-  font-weight: 900;
-  font-size: 70px;
-  max-width: 550px;
-  text-align: center;
-  background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
-  background-size: 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate-gradient 2.5s linear infinite;
-}
-
-.contact-section button {
-  margin-top: 30px;
-  background-color: #edff66;
-  border: 1px solid #edff66;
-  padding: 10px 25px;
-  border-radius: 20px;
-  cursor: pointer;
-  color: black;
-  transition: 0.3s;
-}
-
-.contact-section button:hover {
-  background-color: transparent;
-  color: white;
-  box-shadow: 0 0 15px #edff66;
-}
-
-@media (max-width: 1220px) {
-  .contact-section .img1 {
-    height: 250px;
-    width: 220px;
-    right: 0;
-    top: 20px;
-  }
-
-  .contact-section .img2 {
-    top: 30px;
-    left: -40px;
-    width: 220px;
-    height: 220px;
-  }
-
-  .contact-section .img3 {
-    left: -60px;
-    bottom: 0;
-    width: 220px;
-    height: 220px;
-  }
-}
-
-@media (max-width: 960px) {
-
-  .contact-section .img1 {
-    height: 200px;
-    width: 180px;
-    right: 0;
-    top: 20px;
-  }
-
-  .contact-section .img2 {
-    top: 30px;
-    left: -40px;
-    width: 180px;
-    height: 200px;
-  }
-
-  .contact-section .img3 {
-    left: -60px;
-    bottom: 0;
-    width: 180px;
-    height: 200px;
-  }
-}
-
-@media (max-width: 768px) {
-  .contact-section h2 {
-    font-size: 50px;
-    max-width: 300px;
-  }
-
-  .contact-section .img1 {
-    height: 200px;
-    width: 150px;
-    right: -60px;
-    top: 20px;
-  }
-
-  .contact-section .img2 {
-    top: 30px;
-    left: -80px;
-    width: 150px;
-    height: 180px;
-  }
-
-  .contact-section .img3 {
-    left: -80px;
-    bottom: 0;
-    width: 150px;
-    height: 180px;
-  }
-
-  .contact-section h1 {
-    font-size: 36px;
-  }
-}
-
-/*-----------------------------------------------------*/
-/* Footer Section */
-/* Footer Section */
-.footer {
-  width: 100%;
-  padding: 40px 0;
-  background-color: #0b231e;
-  /* màu nền tối */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-}
-
-.footer h2 {
-  color: #fff;
-  font-size: 28px;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-/* Icon list */
-.footer ul {
-  display: flex;
-  gap: 25px;
-  /* khoảng cách giữa các icon */
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer ul li a {
-  background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
-  background-size: 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate-gradient 2.5s linear infinite;
-  font-size: 24px;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Hover effect */
-.footer ul li a:hover {
-  transform: scale(1.2);
-  /* phóng to nhẹ */
-}
-
-/* Responsive: nhỏ hơn 480px */
-@media (max-width: 480px) {
-  .footer h2 {
-    font-size: 22px;
-  }
-
-  .footer ul {
-    gap: 15px;
-  }
-
-  .footer ul li a {
-    font-size: 20px;
-  }
-}
-
-/* BLUR EFFECT ANIMATION */
-@keyframes autoBlurAnimation {
-  0% {
-    filter: blur(40px);
-    opacity: 0;
-    transform: translateY(50px);
-  }
-
-  100% {
-    filter: blur(0);
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-.autoBlur {
-  opacity: 0;
-}
-
-.autoBlur.animate {
-  animation: autoBlurAnimation 1.5s ease-in-out both;
-}
-
-/* Take Full Screen Animation */
-.autoTakeFull {
-  animation: autoTakeFullAnimation both;
-  animation-timeline: view(70% 65%);
-}
-
-@keyframes autoTakeFullAnimation {
-  to {
-    width: 100%;
-    height: 100vh;
-    border-radius: 0;
-    margin-bottom: 100px;
-  }
-}
-
-/* AUTO DISPLAY ANIMATION }*/
-.autoDisplay {
-  animation: autoDisplayAnimation both;
-  animation-timeline: view(70% 5%);
-}
-
-@keyframes autoDisplayAnimation {
-  from {
-    opacity: 0;
-    transform: translateY(200px) scale(0.3);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/*----------------------------------------------------------*/
-
+/*---------education-section-------------------------------------------------*/
 .education-section {
   width: 80%;
   margin: 100px auto;
@@ -1300,7 +955,255 @@ header {
   }
 }
 
-/* -------------------- Chat Toggle Button -------------------- */
+/*-----------contact-section-----------------------------------------------*/
+.contact-section {
+  position: relative;
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  overflow-x: hidden;
+}
+.contact-section .img1 {
+  position: absolute;
+  top: 10%;
+  right: 20px;
+  height: 400px;
+  clip-path: polygon(41% 0, 100% 0%, 77% 100%, 0% 100%);
+  object-fit: cover;
+}
+.contact-section .img2 {
+  position: absolute;
+  left: 50px;
+  top: 10px;
+  height: 200px;
+  clip-path: polygon(18% 0, 59% 0, 100% 50%, 86% 100%, 37% 100%, 10% 51%);
+  object-fit: cover;
+
+}
+.contact-section .img3 {
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  height: 250px;
+  width: 250px;
+  clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20%);
+  object-fit: cover;
+}
+.contact-section h1 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 48px;
+  background: white;
+  background-size: 200%;
+  background-clip: text;
+  margin: 100px;
+}
+.contact-section h2 {
+  font-family: 'Anton', sans-serif;
+  font-weight: 900;
+  font-size: 70px;
+  max-width: 550px;
+  text-align: center;
+  background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate-gradient 2.5s linear infinite;
+}
+.contact-section button {
+  margin-top: 30px;
+  background-color: #edff66;
+  border: 1px solid #edff66;
+  padding: 10px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: black;
+  transition: 0.3s;
+}
+.contact-section button:hover {
+  background-color: transparent;
+  color: white;
+  box-shadow: 0 0 15px #edff66;
+}
+@media (max-width: 1220px) {
+  .contact-section .img1 {
+    height: 250px;
+    width: 220px;
+    right: 0;
+    top: 20px;
+  }
+  .contact-section .img2 {
+    top: 30px;
+    left: -40px;
+    width: 220px;
+    height: 220px;
+  }
+  .contact-section .img3 {
+    left: -60px;
+    bottom: 0;
+    width: 220px;
+    height: 220px;
+  }
+}
+@media (max-width: 960px) {
+  .contact-section .img1 {
+    height: 200px;
+    width: 180px;
+    right: 0;
+    top: 20px;
+  }
+  .contact-section .img2 {
+    top: 30px;
+    left: -40px;
+    width: 180px;
+    height: 200px;
+  }
+  .contact-section .img3 {
+    left: -60px;
+    bottom: 0;
+    width: 180px;
+    height: 200px;
+  }
+}
+@media (max-width: 768px) {
+  .contact-section h2 {
+    font-size: 50px;
+    max-width: 300px;
+  }
+  .contact-section .img1 {
+    height: 200px;
+    width: 150px;
+    right: -60px;
+    top: 20px;
+  }
+  .contact-section .img2 {
+    top: 30px;
+    left: -80px;
+    width: 150px;
+    height: 180px;
+  }
+  .contact-section .img3 {
+    left: -80px;
+    bottom: 0;
+    width: 150px;
+    height: 180px;
+  }
+
+  .contact-section h1 {
+    font-size: 36px;
+  }
+}
+/*-----------Footer Section------------------------------------------*/
+.footer {
+  width: 100%;
+  padding: 40px 0;
+  background-color: #0b231e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.footer h2 {
+  color: #fff;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer ul li a {
+  background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate-gradient 2.5s linear infinite;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer ul li a:hover {
+  transform: scale(1.2);
+}
+@media (max-width: 480px) {
+  .footer h2 {
+    font-size: 22px;
+  }
+
+  .footer ul {
+    gap: 15px;
+  }
+
+  .footer ul li a {
+    font-size: 20px;
+  }
+}
+/*-----------animation------------------------------------------*/
+/* BLUR EFFECT ANIMATION */
+@keyframes autoBlurAnimation {
+  0% {
+    filter: blur(40px);
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.autoBlur {
+  opacity: 0;
+}
+.autoBlur.animate {
+  animation: autoBlurAnimation 0.8s ease-in-out both;
+}
+/* Take Full Screen Animation */
+.autoTakeFull {
+  animation: autoTakeFullAnimation both;
+  animation-timeline: view(70% 65%);
+}
+@keyframes autoTakeFullAnimation {
+  to {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    margin-bottom: 100px;
+  }
+}
+/* AUTO DISPLAY ANIMATION }*/
+.autoDisplay {
+  animation: autoDisplayAnimation both;
+  animation-timeline: view(70% 5%);
+}
+@keyframes autoDisplayAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(200px) scale(0.3);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* -------------------- Chatbox-------------------- */
 #chatToggle {
   position: fixed;
   bottom: 20px;
@@ -1316,25 +1219,17 @@ header {
   opacity: 0.8;
   transition: 0.5s;
 }
-
-/* trạng thái hover thông thường */
 #chatToggle:hover {
-transform: scale(1.1);
+  transform: scale(1.1);
   opacity: 1;
   box-shadow: 0 0 15px #00ffc6, 0 0 30px #00ffc6;
 }
-
-/* trạng thái “mở chat” */
 #chatToggle.active {
   transform: scale(1.1);
 
   opacity: 1;
   box-shadow: 0 0 15px #00ffc6, 0 0 30px #00ffc6;
 }
-
-/* --------------------
-Chatbox container (dark)
--------------------- */
 #chatbox {
   position: fixed;
   bottom: 80px;
@@ -1343,7 +1238,6 @@ Chatbox container (dark)
   max-width: 90%;
   height: 450px;
   background: #1e1e1e;
-  /* nền dark */
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   display: none;
@@ -1353,8 +1247,6 @@ Chatbox container (dark)
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #f0f0f0;
 }
-
-/* Chat header */
 #chatHeader {
   background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
   background-size: 200%;
@@ -1371,15 +1263,11 @@ Chatbox container (dark)
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-family: 'Anton', sans-serif;
 }
-
-/* Close button */
 #chatClose {
   cursor: pointer;
   font-size: 40px;
   transition: transform 0.2s;
 }
-
-/* Messages container */
 #messages {
   flex: 1;
   padding: 12px;
@@ -1388,7 +1276,6 @@ Chatbox container (dark)
   flex-direction: column;
   gap: 8px;
   background: #2a2a2a;
-  /* dark bg */
   scrollbar-width: thin;
   scrollbar-color: #555 transparent;
 }
@@ -1401,8 +1288,6 @@ Chatbox container (dark)
   background-color: #555;
   border-radius: 3px;
 }
-
-/* Input area */
 #chatInput {
   display: flex;
   border-top: 1px solid #444;
@@ -1448,7 +1333,8 @@ Chatbox container (dark)
   gap: 4px;
   padding: 8px 12px;
   border-radius: 18px 18px 0 18px;
-  background: #3a3a3a; /* same as AI bubble */
+  background: #3a3a3a;
+  /* same as AI bubble */
   color: #f0f0f0;
   max-width: 75%;
 }
@@ -1461,16 +1347,29 @@ Chatbox container (dark)
   display: inline-block;
   animation: bounce 1.2s infinite ease-in-out;
 }
-.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
 
-@keyframes bounce {
-  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
-  40% { transform: scale(1); opacity: 1; }
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
 }
 
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
 
-/* Messages bubbles */
+@keyframes bounce {
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+    opacity: 0.3;
+  }
+
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 .user-msg {
   background: #018ba7;
   /* xanh đậm */
@@ -1486,7 +1385,6 @@ Chatbox container (dark)
 
 .ai-msg {
   background: #3a3a3a;
-  /* xám đậm */
   color: #f0f0f0;
   align-self: flex-start;
   padding: 10px 14px;

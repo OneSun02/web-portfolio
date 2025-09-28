@@ -4,6 +4,42 @@
 document.querySelector('.menu-toggle').addEventListener('click', () => {
   document.querySelector('.head-right').classList.toggle('show');
 });
+// Lấy tất cả link trong header
+const menuLinks = document.querySelectorAll('.head-right a');
+
+menuLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault(); // ngăn default jump
+
+        const targetId = this.getAttribute('href').substring(1); // lấy id bỏ dấu #
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+let lastScroll = 0;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll <= 0) {
+        header.style.top = "0"; // luôn hiện khi lên đầu trang
+        return;
+    }
+
+    if (currentScroll > lastScroll) {
+        // cuộn xuống → ẩn header
+        header.style.top = "-100px"; // ẩn lên trên
+    } else {
+        // cuộn lên → hiện header
+        header.style.top = "0";
+    }
+
+    lastScroll = currentScroll;
+});
 
 // -------------------------
 // Video banner next

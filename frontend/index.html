@@ -23,15 +23,15 @@
                 <i class='bx bx-menu'></i>
             </div>
             <div class="head-right">
-                <p><a href="#">HOME</a></p>
-                <p><a href="#">SKILLS</a></p>
-                <p><a href="#">ABOUT</a></p>
-                <p><a href="#">PROJECTS</a></p>
-                <p><a href="#">EDUCATION</a></p>
-                <p><a href="#">CONTACT</a></p>
+                <p><a href="#home">HOME</a></p>
+                <p><a href="#skills">SKILLS</a></p>
+                <p><a href="#about">ABOUT</a></p>
+                <p><a href="#projects">PROJECTS</a></p>
+                <p><a href="#education">EDUCATION</a></p>
+                <p><a href="#contact">CONTACT</a></p>
             </div>
         </header>
-        <section class="banner-section autoBlur">
+        <section id="home" class="banner-section autoBlur">
             <div class="banner-vid">
                 <video loop autoplay muted playsinline preload="auto" class="banner-video">
                     <source src="/static/videos/hero-1.mp4" type="video/mp4">
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </section>
-        <section class="skills-section autoDisplay">
+        <section id="skills" class="skills-section autoDisplay">
             <div class="slider" style="--quantity: 10">
                 <div class="item" style="--position: 1"><img src="/static/img/slider-image (1).jpg"
                         alt="Machine Learning">
@@ -98,7 +98,7 @@
                 <div class="model"></div>
             </div>
         </section>
-        <section class="about-section">
+        <section id="about" class="about-section">
             <h1>About Me</h1>
             <div class="autoBlur">
                 <h2>DISCOVER MY JOURNEY IN WEB DEVELOPMENT</h2>
@@ -114,7 +114,7 @@
                 impact.
             </p>
         </section>
-        <section class="info-section">
+        <section id="projects" class="info-section">
             <h1>My Projects</h1>
             <p>Here are some web projects I have contributed to and optimized, ranging from WordPress to modern
                 frameworks.</p>
@@ -195,7 +195,7 @@
                 </div>
             </div>
         </section>
-        <section class="education-section">
+        <section id="education" class="education-section">
             <h1>EDUCATION</h1>
             <div class="edu-card">
                 <div class="edu-content">
@@ -223,7 +223,7 @@
             <img class="img2" src="/static/img/contact-2.jpg" alt="contact-img">
             <img class="img3" src="/static/img/contact-3.jpg" alt="contact-img">
         </section>
-        <section class="footer">
+        <section id="contact" class="footer">
             <h2>Contact</h2>
             <ul>
                 <li><a href="#" aria-label="Youtube"><i class="bx bxl-youtube"></i></a></li>
@@ -232,7 +232,7 @@
                 <li><a href="#" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a></li>
             </ul>
         </section>
-        <!-- Chat Toggle Button -->
+                 <!-- Chat Toggle Button -->
         <button id="chatToggle">
             <i class='bx bx-message-square-dots'></i> Chat
         </button>
