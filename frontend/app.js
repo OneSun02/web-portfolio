@@ -141,76 +141,7 @@ function appendMessage(sender, text, type) {
     msgBox.appendChild(msg);
     msgBox.scrollTop = msgBox.scrollHeight;
 }
-// Check support cho animation-timeline
-(function(){
-  const supportTimeline = CSS.supports("animation-timeline: view()");
-  if (supportTimeline) return; // Trình duyệt đã hỗ trợ → dùng CSS gốc
 
-  console.log("⚡ Polyfill scroll animation đang chạy...");
-
-  // --- Helper nội suy ---
-  function lerp(a, b, t) { return a + (b - a) * t; }
-
-  
-
-  // --- autoTakeFull ---
-  const autoTakes = document.querySelectorAll(".autoTakeFull");
-  function updateAutoTakeFull() {
-    autoTakes.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const vw = window.innerWidth;
-
-      // scroll từ 70% → 65% viewport
-      const start = vh * 0.7;
-      const end   = vh * 0.65;
-      let progress = (start - rect.top) / (start - end);
-      progress = Math.min(Math.max(progress, 0), 1);
-
-      const width  = lerp(el.offsetWidth, vw, progress);
-      const height = lerp(el.offsetHeight, vh, progress);
-      const radius = lerp(20, 0, progress);
-      const margin = lerp(0, 100, progress);
-
-      el.style.width        = width + "px";
-      el.style.height       = height + "px";
-      el.style.borderRadius = radius + "px";
-      el.style.marginBottom = margin + "px";
-    });
-  }
-
-  // --- autoDisplay ---
-  const autoDisplays = document.querySelectorAll(".autoDisplay");
-  function updateAutoDisplay() {
-    autoDisplays.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-
-      // scroll từ 70% → 5%
-      const start = vh * 0.7;
-      const end   = vh * 0.05;
-      let progress = (start - rect.top) / (start - end);
-      progress = Math.min(Math.max(progress, 0), 1);
-
-      const opacity = lerp(0, 1, progress);
-      const y = lerp(200, 0, progress);
-      const scale = lerp(0.3, 1, progress);
-
-      el.style.opacity = opacity;
-      el.style.transform = `translateY(${y}px) scale(${scale})`;
-    });
-  }
-
-  // --- update all on scroll ---
-  function updateAll() {
-    updateAutoBlur();
-    updateAutoTakeFull();
-    updateAutoDisplay();
-  }
-  window.addEventListener("scroll", updateAll);
-  window.addEventListener("resize", updateAll);
-  updateAll();
-})();
 document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
