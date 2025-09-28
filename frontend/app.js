@@ -72,6 +72,14 @@ chatClose.addEventListener("click", () => {
     chatToggle.classList.remove("active");
 });
 
+function parseMarkdown(text) {
+    text = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>"); // bold
+    text = text.replace(/\*(.*?)\*/g, "<em>$1</em>");            // italic
+    text = text.replace(/^\* (.*)$/gm, "<li>$1</li>");           // bullet
+    if (/<li>/.test(text)) text = "<ul>" + text + "</ul>";
+    return text;
+}
+
 async function sendMessage() {
     const input = document.getElementById("userInput");
     const message = input.value.trim();
@@ -124,6 +132,8 @@ async function sendMessage() {
         console.error(err);
     }
 }
+
+
 // Gắn sự kiện Enter
 document.getElementById("userInput").addEventListener("keypress", (e) => {
     if (e.key === "Enter") sendMessage();
