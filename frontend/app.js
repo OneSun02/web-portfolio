@@ -163,3 +163,23 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".autoBlur")
     .forEach(el => observer.observe(el));
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('.info-section video');
+
+    videos.forEach(video => {
+        // Thử autoplay
+        video.play().catch(() => {
+            // Nếu autoplay bị chặn → tạo nút play
+            const btn = document.createElement('button');
+            btn.textContent = 'Play Video';
+            btn.className = 'video-play-btn';
+            btn.style.marginTop = '10px';
+            btn.style.display = 'inline-block';
+            btn.addEventListener('click', () => {
+                video.play();
+                btn.style.display = 'none'; // ẩn nút sau khi phát
+            });
+            video.insertAdjacentElement('afterend', btn);
+        });
+    });
+});
