@@ -239,3 +239,25 @@ function updateAutoBlur() {
   window.addEventListener("resize", updateAll);
   updateAll();
 })();
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const el = entry.target;
+
+      if (entry.isIntersecting) {
+        // Reset để animation có thể chạy lại
+        el.classList.remove("animate");
+        void el.offsetWidth; // force reflow
+        el.classList.add("animate");
+      } else {
+        // Khi ra khỏi viewport thì bỏ class đi
+        el.classList.remove("animate");
+      }
+    });
+  }, {
+    threshold: 0.2 // hiển thị ≥20% thì trigger
+  });
+
+  document.querySelectorAll(".autoBlur")
+    .forEach(el => observer.observe(el));
+});
