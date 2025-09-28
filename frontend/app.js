@@ -79,19 +79,19 @@ async function sendMessage() {
 
     const msgBox = document.getElementById("messages");
 
-    // Tạo tin nhắn user
+    // User message
     const userMsg = document.createElement("div");
     userMsg.className = "user-msg";
     userMsg.textContent = message;
     msgBox.appendChild(userMsg);
 
-    // Tạo typing indicator ngay dưới tin nhắn user
+    // Typing indicator
     const typing = document.createElement("div");
     typing.className = "ai-msg typing-indicator";
     typing.innerHTML = '<span></span><span></span><span></span>';
     msgBox.appendChild(typing);
-
     msgBox.scrollTop = msgBox.scrollHeight;
+
     input.value = "";
 
     try {
@@ -100,15 +100,16 @@ async function sendMessage() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message })
         });
+
         const data = await res.json();
 
-        // Xóa typing indicator
+        // Remove typing indicator
         typing.remove();
 
-        // Thêm tin nhắn AI
+        // AI message (Markdown supported)
         const aiMsg = document.createElement("div");
         aiMsg.className = "ai-msg";
-        aiMsg.textContent = data.reply;
+        aiMsg.innerHTML = parseMarkdown(data.reply); // <-- parse Markdown
         msgBox.appendChild(aiMsg);
 
         msgBox.scrollTop = msgBox.scrollHeight;
@@ -123,7 +124,6 @@ async function sendMessage() {
         console.error(err);
     }
 }
-
 // Gắn sự kiện Enter
 document.getElementById("userInput").addEventListener("keypress", (e) => {
     if (e.key === "Enter") sendMessage();
