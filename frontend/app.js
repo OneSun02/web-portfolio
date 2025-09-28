@@ -13,8 +13,7 @@ const video = document.querySelector('.banner-video');
 const movielist = [
   '/static/videos/hero-1.mp4',
   '/static/videos/hero-2.mp4',
-  '/static/videos/hero-3.mp4',
-  '/static/videos/hero-4.mp4'
+  '/static/videos/hero-3.mp4'
 ];
 let index = 0;
 
@@ -163,4 +162,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".autoBlur")
     .forEach(el => observer.observe(el));
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const videos = document.querySelectorAll('.info-section video');
+
+  // Cài đặt lazy play với IntersectionObserver
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const video = entry.target;
+
+      if (entry.isIntersecting) {
+        video.muted = true;
+        video.playsInline = true;
+        video.loop = true;
+
+        video.play().catch(() => {
+          // fallback: nếu autoplay bị block, play khi người dùng chạm màn hình
+          const resume = () => {
+            video.play();
+            document.removeEventListener('touchstart', resume);
+          };
+          document.addEventListener('touchstart', resume, { once: true });
+        });
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.5 }); // video play khi 50% hiện ra
+
+  videos.forEach(video => {
+    observer.observe(video);
+  });
 });
