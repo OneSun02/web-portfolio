@@ -141,104 +141,6 @@ function appendMessage(sender, text, type) {
     msgBox.appendChild(msg);
     msgBox.scrollTop = msgBox.scrollHeight;
 }
-// Check support cho animation-timeline
-(function(){
-  const supportTimeline = CSS.supports("animation-timeline: view()");
-  if (supportTimeline) return; // Trình duyệt đã hỗ trợ → dùng CSS gốc
-
-  console.log("⚡ Polyfill scroll animation đang chạy...");
-
-  // --- Helper nội suy ---
-  function lerp(a, b, t) { return a + (b - a) * t; }
-
-  // --- autoBlur ---
-  const autoBlurs = document.querySelectorAll(".autoBlur");
-function updateAutoBlur() {
-  autoBlurs.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    const vh = window.innerHeight;
-
-    // Tính phần trăm hiển thị trong viewport
-    const visible = Math.min(Math.max((vh - rect.top) / (vh + rect.height), 0), 1);
-    let progress = visible; // 0..1 mượt hơn
-
-    if (progress <= 0.4) {
-      const t = progress / 0.4;
-      el.style.filter = `blur(${lerp(40, 0, t)}px)`;
-      el.style.opacity = t;
-      el.style.transform = `translateY(0px)`;
-    } else if (progress <= 0.6) {
-      el.style.filter = "blur(0px)";
-      el.style.opacity = 1;
-      el.style.transform = "translateY(0px)";
-    } else {
-      const t = (progress - 0.6) / 0.4;
-      el.style.filter = `blur(${lerp(0, 40, t)}px)`;
-      el.style.opacity = 1 - t;
-      el.style.transform = `translateY(${lerp(0, -200, t)}px)`;
-    }
-  });
-}
-
-
-  // --- autoTakeFull ---
-  const autoTakes = document.querySelectorAll(".autoTakeFull");
-  function updateAutoTakeFull() {
-    autoTakes.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const vw = window.innerWidth;
-
-      // scroll từ 70% → 65% viewport
-      const start = vh * 0.7;
-      const end   = vh * 0.65;
-      let progress = (start - rect.top) / (start - end);
-      progress = Math.min(Math.max(progress, 0), 1);
-
-      const width  = lerp(el.offsetWidth, vw, progress);
-      const height = lerp(el.offsetHeight, vh, progress);
-      const radius = lerp(20, 0, progress);
-      const margin = lerp(0, 100, progress);
-
-      el.style.width        = width + "px";
-      el.style.height       = height + "px";
-      el.style.borderRadius = radius + "px";
-      el.style.marginBottom = margin + "px";
-    });
-  }
-
-  // --- autoDisplay ---
-  const autoDisplays = document.querySelectorAll(".autoDisplay");
-  function updateAutoDisplay() {
-    autoDisplays.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-
-      // scroll từ 70% → 5%
-      const start = vh * 0.7;
-      const end   = vh * 0.05;
-      let progress = (start - rect.top) / (start - end);
-      progress = Math.min(Math.max(progress, 0), 1);
-
-      const opacity = lerp(0, 1, progress);
-      const y = lerp(200, 0, progress);
-      const scale = lerp(0.3, 1, progress);
-
-      el.style.opacity = opacity;
-      el.style.transform = `translateY(${y}px) scale(${scale})`;
-    });
-  }
-
-  // --- update all on scroll ---
-  function updateAll() {
-    updateAutoBlur();
-    updateAutoTakeFull();
-    updateAutoDisplay();
-  }
-  window.addEventListener("scroll", updateAll);
-  window.addEventListener("resize", updateAll);
-  updateAll();
-})();
 document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -260,4 +162,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".autoBlur")
     .forEach(el => observer.observe(el));
+});
+document.addEventListener("DOMContentLoaded", () => {
+    // Kiểm tra trình duyệt có hỗ trợ animation-timeline
+    const supportsTimeline = CSS.supports("animation-timeline: view()");
+    if (supportsTimeline) return; // nếu hỗ trợ thì dùng CSS gốc
+
+    // --- Helper nội suy ---
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    // --- AUTO DISPLAY Fallback ---
+    const autoDisplays = document.querySelectorAll('.autoDisplay');
+    const observerDisplay = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0) scale(1)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    autoDisplays.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(200px) scale(0.3)';
+        observerDisplay.observe(el);
+    });
+
+    // --- AUTO TAKE FULL Fallback ---
+    const autoTakeFulls = document.querySelectorAll('.autoTakeFull');
+    const observerTakeFull = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.transition = 'all 0.8s ease';
+                entry.target.style.width = '100%';
+                entry.target.style.height = '100vh';
+                entry.target.style.borderRadius = '0';
+                entry.target.style.marginBottom = '100px';
+            }
+        });
+    }, { threshold: 0.5 });
+
+    autoTakeFulls.forEach(el => {
+        // bạn có thể gán state ban đầu nếu cần
+        observerTakeFull.observe(el);
+    });
 });
