@@ -77,12 +77,22 @@ async function sendMessage() {
     const message = input.value.trim();
     if (!message) return;
 
-    appendMessage("You", message, "user");
-    input.value = "";
+    const msgBox = document.getElementById("messages");
 
-    // show typing indicator
-    const typing = document.getElementById("typingIndicator");
-    typing.style.display = "flex";
+    // Tạo tin nhắn user
+    const userMsg = document.createElement("div");
+    userMsg.className = "user-msg";
+    userMsg.textContent = message;
+    msgBox.appendChild(userMsg);
+
+    // Tạo typing indicator ngay dưới tin nhắn user
+    const typing = document.createElement("div");
+    typing.className = "ai-msg typing-indicator";
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    msgBox.appendChild(typing);
+
+    msgBox.scrollTop = msgBox.scrollHeight;
+    input.value = "";
 
     try {
         const res = await fetch("/chat", {
@@ -90,19 +100,29 @@ async function sendMessage() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message })
         });
-
         const data = await res.json();
 
-        typing.style.display = "none";  // hide typing indicator
-        appendMessage("Nhat", data.reply, "ai");
+        // Xóa typing indicator
+        typing.remove();
+
+        // Thêm tin nhắn AI
+        const aiMsg = document.createElement("div");
+        aiMsg.className = "ai-msg";
+        aiMsg.textContent = data.reply;
+        msgBox.appendChild(aiMsg);
+
+        msgBox.scrollTop = msgBox.scrollHeight;
 
     } catch (err) {
-        typing.style.display = "none";
-        appendMessage("System", "❌ Backend connection error!", "error");
+        typing.remove();
+        const errorMsg = document.createElement("div");
+        errorMsg.className = "system-msg";
+        errorMsg.textContent = "❌ Backend connection error!";
+        msgBox.appendChild(errorMsg);
+        msgBox.scrollTop = msgBox.scrollHeight;
         console.error(err);
     }
 }
-
 
 // Gắn sự kiện Enter
 document.getElementById("userInput").addEventListener("keypress", (e) => {
