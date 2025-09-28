@@ -1444,15 +1444,16 @@ Chatbox container (dark)
 
 /* Typing indicator */
 #typingIndicator {
-  display: none !important;
+  display: none; /* bỏ !important */
   align-self: flex-start;
   padding: 8px 12px;
   border-radius: 20px;
-  background: #444;
+  background: #444; /* dark background */
   color: #f0f0f0;
   margin-bottom: 6px;
-  display: flex;
+  display: flex; /* để span nằm ngang */
   gap: 6px;
+  flex-direction: row;
 }
 
 #typingIndicator span {
@@ -1470,6 +1471,11 @@ Chatbox container (dark)
 
 #typingIndicator span:nth-child(3) {
   animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+  40% { transform: scale(1); opacity: 1; }
 }
 
 /* Messages bubbles */

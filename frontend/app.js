@@ -72,18 +72,15 @@ chatClose.addEventListener("click", () => {
     chatToggle.classList.remove("active");
 });
 
-// -------------------------
-// Gửi tin nhắn
-// -------------------------
 async function sendMessage() {
     const input = document.getElementById("userInput");
     const message = input.value.trim();
     if (!message) return;
 
-    appendMessage("Bạn", message, "user");
+    appendMessage("You", message, "user");
     input.value = "";
 
-    // Lúc này mới show 3 chấm
+    // show typing indicator
     const typing = document.getElementById("typingIndicator");
     typing.style.display = "flex";
 
@@ -96,12 +93,12 @@ async function sendMessage() {
 
         const data = await res.json();
 
-        typing.style.display = "none";  // ẩn 3 chấm
+        typing.style.display = "none";  // hide typing indicator
         appendMessage("Nhat", data.reply, "ai");
 
     } catch (err) {
         typing.style.display = "none";
-        appendMessage("System", "❌ Lỗi kết nối backend!", "error");
+        appendMessage("System", "❌ Backend connection error!", "error");
         console.error(err);
     }
 }
