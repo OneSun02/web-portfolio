@@ -1,66 +1,59 @@
 // -------------------------
-// Menu toggle
+// HEADER
 // -------------------------
-document.querySelector('.menu-toggle').addEventListener('click', () => {
-  document.querySelector('.head-right').classList.toggle('show');
-});
-// Lấy tất cả link trong header
+const menuToggle = document.querySelector('.menu-toggle');
+const headRight = document.querySelector('.head-right');
 const menuLinks = document.querySelectorAll('.head-right a');
+const header = document.querySelector('header');
+let lastScroll = 0;
 
+// Toggle menu
+menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    headRight.classList.toggle('show');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!headRight.contains(e.target) && !menuToggle.contains(e.target)) {
+        headRight.classList.remove('show');
+    }
+});
+
+// Smooth scroll to sections & close mobile menu
 menuLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault(); // ngăn default jump
-
-        const targetId = this.getAttribute('href').substring(1); // lấy id bỏ dấu #
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
         const targetSection = document.getElementById(targetId);
-
-        if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (targetSection) targetSection.scrollIntoView({ behavior: 'smooth' });
+        headRight.classList.remove('show');
     });
 });
-let lastScroll = 0;
-const header = document.querySelector("header");
 
-window.addEventListener("scroll", () => {
+// Hide/show header on scroll
+window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-
-    if (currentScroll <= 0) {
-        header.style.top = "0"; // luôn hiện khi lên đầu trang
-        return;
-    }
-
-    if (currentScroll > lastScroll) {
-        // cuộn xuống → ẩn header
-        header.style.top = "-100px"; // ẩn lên trên
-    } else {
-        // cuộn lên → hiện header
-        header.style.top = "0";
-    }
-
+    if (currentScroll <= 0) header.style.top = '0';
+    else if (currentScroll > lastScroll) header.style.top = '-100px'; // scroll down → hide
+    else header.style.top = '0'; // scroll up → show
     lastScroll = currentScroll;
 });
 
 // -------------------------
-// Video banner next
+// Video banner
 // -------------------------
 const nextButton = document.querySelector('.next-btn');
 const video = document.querySelector('.banner-video');
-const movielist = [
-  '/static/videos/hero-1.mp4',
-  '/static/videos/hero-2.mp4',
-  '/static/videos/hero-3.mp4'
-];
+const movielist = ['/static/videos/hero-1.mp4', '/static/videos/hero-2.mp4', '/static/videos/hero-3.mp4'];
 let index = 0;
 
-nextButton.addEventListener('click', function() {
-  index = (index + 1) % movielist.length;
-  video.src = movielist[index];
+nextButton.addEventListener('click', () => {
+    index = (index + 1) % movielist.length;
+    video.src = movielist[index];
 });
 
-// -------------------------
-// Smooth scroll
-// -------------------------
+// Custom linear scroll
 function linearScroll(distance, duration) {
     const start = window.scrollY;
     const startTime = performance.now();
@@ -68,54 +61,45 @@ function linearScroll(distance, duration) {
     function animation(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-
         window.scrollTo(0, start + distance * progress);
-
-        if (progress < 1) {
-            requestAnimationFrame(animation);
-        }
+        if (progress < 1) requestAnimationFrame(animation);
     }
 
     requestAnimationFrame(animation);
 }
 
-document.querySelector('.scroll-down').addEventListener('click', () => {
-    linearScroll(window.innerHeight, 1000);
-});
+document.querySelector('.scroll-down').addEventListener('click', () => linearScroll(window.innerHeight, 1000));
 
 // -------------------------
-// Chatbox toggle
+// Chatbox
 // -------------------------
 const chatbox = document.getElementById("chatbox");
 const chatToggle = document.getElementById("chatToggle");
 const chatClose = document.getElementById("chatClose");
 
-// Toggle hiển thị khi click nút toggle
+// Toggle chat visibility
 chatToggle.addEventListener("click", () => {
-    if (chatbox.style.display === "flex") {
-        chatbox.style.display = "none"; // đóng chat
-        chatToggle.classList.remove("active"); // nút về bình thường
-    } else {
-        chatbox.style.display = "flex"; // mở chat
-        chatToggle.classList.add("active"); // giữ hover luôn
-    }
+    const isOpen = chatbox.style.display === "flex";
+    chatbox.style.display = isOpen ? "none" : "flex";
+    chatToggle.classList.toggle("active", !isOpen);
 });
 
-
-// Click nút close luôn đóng chat
+// Close chat
 chatClose.addEventListener("click", () => {
     chatbox.style.display = "none";
     chatToggle.classList.remove("active");
 });
 
+// Simple markdown parser
 function parseMarkdown(text) {
-    text = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>"); // bold
-    text = text.replace(/\*(.*?)\*/g, "<em>$1</em>");            // italic
-    text = text.replace(/^\* (.*)$/gm, "<li>$1</li>");           // bullet
+    text = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    text = text.replace(/\*(.*?)\*/g, "<em>$1</em>");
+    text = text.replace(/^\* (.*)$/gm, "<li>$1</li>");
     if (/<li>/.test(text)) text = "<ul>" + text + "</ul>";
     return text;
 }
 
+// Send message
 async function sendMessage() {
     const input = document.getElementById("userInput");
     const message = input.value.trim();
@@ -135,7 +119,6 @@ async function sendMessage() {
     typing.innerHTML = '<span></span><span></span><span></span>';
     msgBox.appendChild(typing);
     msgBox.scrollTop = msgBox.scrollHeight;
-
     input.value = "";
 
     try {
@@ -146,16 +129,13 @@ async function sendMessage() {
         });
 
         const data = await res.json();
-
-        // Remove typing indicator
         typing.remove();
 
-        // AI message (Markdown supported)
+        // AI message
         const aiMsg = document.createElement("div");
         aiMsg.className = "ai-msg";
-        aiMsg.innerHTML = parseMarkdown(data.reply); // <-- parse Markdown
+        aiMsg.innerHTML = parseMarkdown(data.reply);
         msgBox.appendChild(aiMsg);
-
         msgBox.scrollTop = msgBox.scrollHeight;
 
     } catch (err) {
@@ -169,57 +149,27 @@ async function sendMessage() {
     }
 }
 
-
-// Gắn sự kiện Enter
+// Send message on Enter or button click
 document.getElementById("userInput").addEventListener("keypress", (e) => {
     if (e.key === "Enter") sendMessage();
 });
-
-// Gắn sự kiện nút gửi (nếu bạn có button)
 const sendBtn = document.querySelector("#chatInput button");
 if (sendBtn) sendBtn.addEventListener("click", sendMessage);
 
 // -------------------------
-// Hiển thị tin nhắn
+// Animation observer
 // -------------------------
-function appendMessage(sender, text, type) {
-    const msgBox = document.getElementById("messages");
-    const msg = document.createElement("div");
-
-    msg.textContent = `${sender}: ${text}`;
-
-    if (type === "user") {
-        msg.className = "user-msg";
-    } else if (type === "ai") {
-        msg.className = "ai-msg";
-    } else {
-        msg.className = "system-msg";
-    }
-
-    msgBox.appendChild(msg);
-    msgBox.scrollTop = msgBox.scrollHeight;
-}
-
-
 document.addEventListener("DOMContentLoaded", () => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const el = entry.target;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const el = entry.target;
+            if (entry.isIntersecting) {
+                el.classList.remove("animate");
+                void el.offsetWidth; // force reflow
+                el.classList.add("animate");
+            } else el.classList.remove("animate");
+        });
+    }, { threshold: 0.2 });
 
-      if (entry.isIntersecting) {
-        // Reset để animation có thể chạy lại
-        el.classList.remove("animate");
-        void el.offsetWidth; // force reflow
-        el.classList.add("animate");
-      } else {
-        // Khi ra khỏi viewport thì bỏ class đi
-        el.classList.remove("animate");
-      }
-    });
-  }, {
-    threshold: 0.2 // hiển thị ≥20% thì trigger
-  });
-
-  document.querySelectorAll(".autoBlur")
-    .forEach(el => observer.observe(el));
+    document.querySelectorAll(".autoBlur").forEach(el => observer.observe(el));
 });
