@@ -163,23 +163,30 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".autoBlur")
     .forEach(el => observer.observe(el));
 });
+function isMobile() {
+    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const videos = document.querySelectorAll('.info-section video');
 
     videos.forEach(video => {
-        // Thử autoplay
-        video.play().catch(() => {
-            // Nếu autoplay bị chặn → tạo nút play
+        if (isMobile()) {
+            // Mobile → tạo nút play
             const btn = document.createElement('button');
             btn.textContent = 'Play Video';
             btn.className = 'video-play-btn';
             btn.style.marginTop = '10px';
-            btn.style.display = 'inline-block';
             btn.addEventListener('click', () => {
                 video.play();
-                btn.style.display = 'none'; // ẩn nút sau khi phát
+                btn.style.display = 'none';
             });
             video.insertAdjacentElement('afterend', btn);
-        });
+        } else {
+            // Desktop → autoplay
+            video.play().catch(() => {
+                console.log('Autoplay bị chặn trên desktop (hiếm xảy ra)');
+            });
+        }
     });
 });
