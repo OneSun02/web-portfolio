@@ -685,22 +685,25 @@ header {
 }
 
 .card button {
+    background-color: #edff66;
+  border: 2px solid #edff66;
+  color: black;
   position: absolute;
   bottom: 5%;
   left: 5%;
   padding: 10px 25px;
-  border: 1px solid gray;
-  background-color: #0f1217;
-  color: gray;
   border-radius: 20px;
   box-shadow: 0 0 5px lightgray;
   cursor: pointer;
   transition: 0.3s;
+   opacity: 0.8;
 }
 
 .card button:hover {
-  box-shadow: 0 0 15px lightgray;
-  opacity: 0.7;
+  background-color: transparent;
+  color: white;
+  box-shadow: 0 0 15px #edff66;
+
 }
 
 .card:hover {
