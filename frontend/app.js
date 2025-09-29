@@ -11,15 +11,16 @@ let lastScroll = 0;
 menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     headRight.classList.toggle('show');
+    menuToggle.classList.toggle("open");
 });
 
 // Close menu when clicking outside
 document.addEventListener('click', (e) => {
     if (!headRight.contains(e.target) && !menuToggle.contains(e.target)) {
         headRight.classList.remove('show');
+        menuToggle.classList.remove("open");
     }
 });
-
 // Smooth scroll to sections & close mobile menu
 menuLinks.forEach(link => {
     link.addEventListener('click', (e) => {

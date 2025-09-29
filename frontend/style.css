@@ -37,7 +37,7 @@ header {
   background-color: rgba(75, 75, 75, 0.36);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: top 0.3s ease; /* tạo animation trượt */
+  transition: top 0.3s ease;
 }
 
 
@@ -83,7 +83,18 @@ header {
   color: white;
   cursor: pointer;
 }
-
+.menu-toggle .menu-icon {
+  width: 28px;   
+  height: 28px;
+  filter: brightness(0) invert(1); 
+  transition: transform 0.3s ease;
+}
+.menu-toggle:hover .menu-icon {
+  transform: scale(1.1);
+}
+.menu-toggle.open .menu-icon {
+  transform: rotate(180deg);
+}
 @media screen and (max-width: 768px) {
   .head-right {
     display: none;
@@ -94,7 +105,7 @@ header {
     right: 0;
     width: 200px;
     padding: 20px;
-    gap:10px;
+    gap: 10px;
   }
 
   .head-right.show {
@@ -138,6 +149,7 @@ header {
   background: rgba(0, 0, 0, 0.3);
   z-index: 0;
 }
+
 .banner-info {
   z-index: 1;
   position: absolute;
@@ -153,6 +165,7 @@ header {
   margin-bottom: 1rem;
   color: white;
 }
+
 .banner-info p {
   max-width: 400px;
   font-size: clamp(14px, 1.2vw, 20px);
@@ -213,16 +226,24 @@ header {
   opacity: 1;
   box-shadow: 0 0 15px rgb(255, 255, 255);
 }
+
 .scroll-down {
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: clamp(24px, 4vw, 48px);
-  color: white;
   cursor: pointer;
-  animation: bounceFade 2s infinite;
   z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scroll-down img {
+  width: clamp(20px, 4vw, 42px); 
+  height: auto;
+  filter: brightness(0) invert(1); 
+  animation: bounceFade 2s infinite; 
+  transition: transform 0.3s ease;
 }
 
 @keyframes bounceFade {
@@ -592,9 +613,11 @@ header {
   max-width: 400px;
   line-height: 25px;
 }
+
 .project-group {
   margin-top: 50px;
 }
+
 .project-title {
   margin-bottom: 15px;
   font-family: 'Anton', sans-serif;
@@ -736,9 +759,11 @@ header {
     width: 95%;
     margin: 50px auto 0 auto;
   }
+
   .project-title {
     font-size: 32px;
   }
+
   .special-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -777,6 +802,7 @@ header {
     font-size: 36px;
   }
 }
+
 /*---------education-section-------------------------------------------------*/
 .education-section {
   width: 80%;
@@ -881,7 +907,6 @@ header {
 @media (max-width: 1024px) {
   .edu-card {
     flex-direction: column;
-    /* Chuyển sang cột */
     text-align: center;
   }
 
@@ -893,12 +918,10 @@ header {
 
   .edu-content h2 {
     font-size: 36px;
-    /* Giảm kích thước chữ */
   }
 
   .edu-badge img {
     width: 100px;
-    /* Thu nhỏ logo */
   }
 }
 
@@ -967,6 +990,7 @@ header {
   height: 100%;
   overflow-x: hidden;
 }
+
 .contact-section .img1 {
   position: absolute;
   top: 10%;
@@ -975,6 +999,7 @@ header {
   clip-path: polygon(41% 0, 100% 0%, 77% 100%, 0% 100%);
   object-fit: cover;
 }
+
 .contact-section .img2 {
   position: absolute;
   left: 50px;
@@ -984,6 +1009,7 @@ header {
   object-fit: cover;
 
 }
+
 .contact-section .img3 {
   position: absolute;
   left: 5%;
@@ -993,6 +1019,7 @@ header {
   clip-path: polygon(50% 0%, 83% 17%, 100% 60%, 87% 100%, 28% 100%, 4% 60%, 10% 20%);
   object-fit: cover;
 }
+
 .contact-section h1 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 48px;
@@ -1001,6 +1028,7 @@ header {
   background-clip: text;
   margin: 100px;
 }
+
 .contact-section h2 {
   font-family: 'Anton', sans-serif;
   font-weight: 900;
@@ -1014,6 +1042,7 @@ header {
   -webkit-text-fill-color: transparent;
   animation: animate-gradient 2.5s linear infinite;
 }
+
 .contact-section button {
   margin-top: 30px;
   background-color: #edff66;
@@ -1024,11 +1053,13 @@ header {
   color: black;
   transition: 0.3s;
 }
+
 .contact-section button:hover {
   background-color: transparent;
   color: white;
   box-shadow: 0 0 15px #edff66;
 }
+
 @media (max-width: 1220px) {
   .contact-section .img1 {
     height: 250px;
@@ -1036,12 +1067,14 @@ header {
     right: 0;
     top: 20px;
   }
+
   .contact-section .img2 {
     top: 30px;
     left: -40px;
     width: 220px;
     height: 220px;
   }
+
   .contact-section .img3 {
     left: -60px;
     bottom: 0;
@@ -1049,6 +1082,7 @@ header {
     height: 220px;
   }
 }
+
 @media (max-width: 960px) {
   .contact-section .img1 {
     height: 200px;
@@ -1056,12 +1090,14 @@ header {
     right: 0;
     top: 20px;
   }
+
   .contact-section .img2 {
     top: 30px;
     left: -40px;
     width: 180px;
     height: 200px;
   }
+
   .contact-section .img3 {
     left: -60px;
     bottom: 0;
@@ -1069,23 +1105,27 @@ header {
     height: 200px;
   }
 }
+
 @media (max-width: 768px) {
   .contact-section h2 {
     font-size: 50px;
     max-width: 300px;
   }
+
   .contact-section .img1 {
     height: 200px;
     width: 150px;
     right: -60px;
     top: 20px;
   }
+
   .contact-section .img2 {
     top: 30px;
     left: -80px;
     width: 150px;
     height: 180px;
   }
+
   .contact-section .img3 {
     left: -80px;
     bottom: 0;
@@ -1097,6 +1137,7 @@ header {
     font-size: 36px;
   }
 }
+
 /*-----------Footer Section------------------------------------------*/
 .footer {
   width: 100%;
@@ -1109,7 +1150,12 @@ header {
 }
 
 .footer h2 {
-  color: #fff;
+  background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate-gradient 2.5s linear infinite;
   font-size: 28px;
   margin-bottom: 20px;
   font-weight: 600;
@@ -1124,35 +1170,35 @@ header {
 }
 
 .footer ul li a {
-  background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
-  background-size: 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate-gradient 2.5s linear infinite;
-  font-size: 24px;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease;
 }
 
-.footer ul li a:hover {
+.footer ul li a img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  /* chuyển tất cả ảnh thành màu trắng */
+  transition: transform 0.3s ease;
+}
+
+.footer ul li a:hover img {
   transform: scale(1.2);
 }
-@media (max-width: 480px) {
-  .footer h2 {
-    font-size: 22px;
-  }
 
+@media (max-width: 480px) {
   .footer ul {
     gap: 15px;
   }
 
-  .footer ul li a {
-    font-size: 20px;
+  .footer ul li a img {
+    width: 20px;
+    height: 20px;
   }
 }
+
 /*-----------animation------------------------------------------*/
 /* BLUR EFFECT ANIMATION */
 @keyframes autoBlurAnimation {
@@ -1168,17 +1214,21 @@ header {
     transform: translateY(0);
   }
 }
+
 .autoBlur {
   opacity: 0;
 }
+
 .autoBlur.animate {
   animation: autoBlurAnimation 0.8s ease-in-out both;
 }
+
 /* Take Full Screen Animation */
 .autoTakeFull {
   animation: autoTakeFullAnimation both;
   animation-timeline: view(70% 65%);
 }
+
 @keyframes autoTakeFullAnimation {
   to {
     width: 100%;
@@ -1187,11 +1237,13 @@ header {
     margin-bottom: 100px;
   }
 }
+
 /* AUTO DISPLAY ANIMATION }*/
 .autoDisplay {
   animation: autoDisplayAnimation both;
   animation-timeline: view(70% 5%);
 }
+
 @keyframes autoDisplayAnimation {
   from {
     opacity: 0;
@@ -1203,6 +1255,7 @@ header {
     transform: translateY(0) scale(1);
   }
 }
+
 /* -------------------- Chatbox-------------------- */
 #chatToggle {
   position: fixed;
@@ -1219,17 +1272,24 @@ header {
   opacity: 0.8;
   transition: 0.5s;
 }
+#chatToggle img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
 #chatToggle:hover {
   transform: scale(1.1);
   opacity: 1;
   box-shadow: 0 0 15px #00ffc6, 0 0 30px #00ffc6;
 }
+
 #chatToggle.active {
   transform: scale(1.1);
 
   opacity: 1;
   box-shadow: 0 0 15px #00ffc6, 0 0 30px #00ffc6;
 }
+
 #chatbox {
   position: fixed;
   bottom: 80px;
@@ -1247,6 +1307,7 @@ header {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #f0f0f0;
 }
+
 #chatHeader {
   background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
   background-size: 200%;
@@ -1263,11 +1324,13 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-family: 'Anton', sans-serif;
 }
+
 #chatClose {
   cursor: pointer;
   font-size: 40px;
   transition: transform 0.2s;
 }
+
 #messages {
   flex: 1;
   padding: 12px;
@@ -1288,6 +1351,7 @@ header {
   background-color: #555;
   border-radius: 3px;
 }
+
 #chatInput {
   display: flex;
   border-top: 1px solid #444;
@@ -1370,6 +1434,7 @@ header {
     opacity: 1;
   }
 }
+
 .user-msg {
   background: #018ba7;
   /* xanh đậm */

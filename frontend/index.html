@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/static/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap&subset=vietnamese" rel="stylesheet">
 </head>
@@ -20,7 +19,7 @@
                 <img src="/static/img/logo.png" alt="logo">
             </div>
             <div class="menu-toggle">
-                <i class='bx bx-menu'></i>
+                <img src="/static/img/menu.png" alt="Menu" class="menu-icon">
             </div>
             <div class="head-right">
                 <p><a href="#home">HOME</a></p>
@@ -46,8 +45,9 @@
                     NEXT
                 </div>
                 <div class="scroll-down">
-                    <i class='bx bx-chevrons-down'></i>
+                    <img src="/static/img/arrow.png" alt="Scroll Down" class="scroll-icon">
                 </div>
+
             </div>
         </section>
         <section id="skills" class="skills-section autoDisplay">
@@ -226,15 +226,35 @@
         <section id="contact" class="footer">
             <h2>Contact</h2>
             <ul>
-                <li><a href="#" aria-label="Youtube"><i class="bx bxl-youtube"></i></a></li>
-                <li><a href="#" aria-label="Twitter"><i class="bx bxl-twitter"></i></a></li>
-                <li><a href="#" aria-label="Github"><i class="bx bxl-github"></i></a></li>
-                <li><a href="#" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a></li>
+                <ul class="social-links">
+                    <li>
+                        <a href="#" aria-label="phone">
+                            <img src="/static/img/phone-call.png" alt="phone" width="24" height="24">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="facebook">
+                            <img src="/static/img/facebook.png" alt="facebook" width="24" height="24">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="Github">
+                            <img src="/static/img/github.png" alt="Github" width="24" height="24">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="LinkedIn">
+                            <img src="/static/img/linkedin.png" alt="LinkedIn" width="24" height="24">
+                        </a>
+                    </li>
+                </ul>
+
             </ul>
         </section>
-                 <!-- Chat Toggle Button -->
+        <!-- Chat Toggle Button -->
         <button id="chatToggle">
-            <i class='bx bx-message-square-dots'></i> Chat
+            <img src="/static/img/chat.png" alt="Chat">
+            Chat
         </button>
         <!-- Chatbox -->
         <div id="chatbox">
