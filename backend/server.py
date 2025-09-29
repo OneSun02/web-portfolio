@@ -84,7 +84,7 @@ def chat(req: ChatRequest):
     - Data Science/ML: Pandas, NumPy, Matplotlib, Scikit-learn, Keras
     - Tools: Git, GitHub, Jupyter Notebook | AI hỗ trợ code & workflow
     Soft skills: Giải quyết vấn đề, giao tiếp, quản lý thời gian, học hỏi nhanh, chú ý chi tiết, code sạch, test kỹ
-    Hướng dẫn trả lời: Khi hỏi kinh nghiệm, nêu dự án. Khi hỏi kỹ năng, giải thích ứng dụng. Nếu không biết, trả lời trung thực, giữ tích cực. Luôn tự tin, thân thiện, chuyên nghiệp. trả lời đúng trọng tâm.
+    Hướng dẫn trả lời: Khi hỏi kinh nghiệm, nêu dự án. Khi hỏi kỹ năng, giải thích ứng dụng. Nếu không biết, trả lời trung thực, giữ tích cực. Luôn tự tin, thân thiện, chuyên nghiệp, trả lời đúng trọng tâm, đúng ngôn ngữ của người hỏi.
     """
     payload = {
         "contents": [
