@@ -695,16 +695,15 @@ header {
   border-radius: 20px;
   box-shadow: 0 0 5px lightgray;
   cursor: pointer;
-  transition: 0.3s;
-   opacity: 0.8;
+  transition: all 0.3s ease;
 }
 
 .card button:hover {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.5); 
   color: white;
   box-shadow: 0 0 15px #edff66;
-
 }
+
 
 .card:hover {
   box-shadow: 0 0 15px rgb(211, 211, 211);
