@@ -1309,12 +1309,6 @@ header {
 }
 
 #chatHeader {
-  background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
-  background-size: 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate-gradient 2.5s linear infinite;
   padding: 12px 16px;
   display: flex;
   justify-content: space-between;
@@ -1322,10 +1316,18 @@ header {
   cursor: move;
   font-size: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-family: 'Anton', sans-serif;
 }
-
+.AI-ASSISTANT{
+    font-family: 'Anton', sans-serif;
+ background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate-gradient 2.5s linear infinite;
+}
 #chatClose {
+  color:white;
   cursor: pointer;
   font-size: 40px;
   transition: transform 0.2s;
