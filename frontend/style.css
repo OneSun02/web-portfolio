@@ -83,18 +83,22 @@ header {
   color: white;
   cursor: pointer;
 }
+
 .menu-toggle .menu-icon {
-  width: 28px;   
+  width: 28px;
   height: 28px;
-  filter: brightness(0) invert(1); 
+  filter: brightness(0) invert(1);
   transition: transform 0.3s ease;
 }
+
 .menu-toggle:hover .menu-icon {
   transform: scale(1.1);
 }
+
 .menu-toggle.open .menu-icon {
   transform: rotate(180deg);
 }
+
 @media screen and (max-width: 768px) {
   .head-right {
     display: none;
@@ -238,11 +242,12 @@ header {
   justify-content: center;
   align-items: center;
 }
+
 .scroll-down img {
-  width: clamp(20px, 4vw, 42px); 
+  width: clamp(20px, 4vw, 42px);
   height: auto;
-  filter: brightness(0) invert(1); 
-  animation: bounceFade 2s infinite; 
+  filter: brightness(0) invert(1);
+  animation: bounceFade 2s infinite;
   transition: transform 0.3s ease;
 }
 
@@ -568,7 +573,7 @@ header {
 
 .about-section p {
   color: gray;
-  max-width: 425px;
+  max-width: 725px;
   text-align: center;
   line-height: 25px;
 }
@@ -586,6 +591,11 @@ header {
 
   .about-section h1 {
     font-size: 36px;
+  }
+
+  .about-section span,
+  .about-section p {
+    width: 95%;
   }
 }
 
@@ -927,7 +937,7 @@ header {
 
 @media (max-width: 768px) {
   .education-section {
-    width: 90%;
+    width: 95%;
     margin: 50px auto;
   }
 
@@ -1272,11 +1282,13 @@ header {
   opacity: 0.8;
   transition: 0.5s;
 }
+
 #chatToggle img {
   width: 18px;
   height: 18px;
   filter: brightness(0) invert(1);
 }
+
 #chatToggle:hover {
   transform: scale(1.1);
   opacity: 1;
@@ -1317,19 +1329,21 @@ header {
   font-size: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.AI-ASSISTANT{
-    font-family: 'Anton', sans-serif;
- background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
+
+.AI-ASSISTANT {
+  font-family: 'Anton', sans-serif;
+  background: linear-gradient(to right, #4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
   background-size: 200%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: animate-gradient 2.5s linear infinite;
 }
+
 #chatClose {
-  color:white;
+  color: white;
   cursor: pointer;
-  font-size: 40px;
+  font-size: 25px;
   transition: transform 0.2s;
 }
 
